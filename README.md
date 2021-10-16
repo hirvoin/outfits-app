@@ -1,2 +1,3 @@
-# rn-app
-React Native App
+# Clothing App
+
+## Mobile application for tracing clothing usage!

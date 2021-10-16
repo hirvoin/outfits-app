@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react-native";
 import React from "react";
 import styled from "styled-components/native";
 
-import GarmentList from "./";
+import GarmentFormList from "./";
 import { Props as GarmentListItemProps } from "../GarmentListItem";
 
 const Wrapper = styled.View`
@@ -12,7 +12,7 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
-storiesOf("Garment List", module).add("Basic", () => <Basic />);
+storiesOf("Garment Form List", module).add("Basic", () => <Basic />);
 
 const data: GarmentListItemProps[] = [
   { title: "Item 1" },
@@ -34,6 +34,6 @@ const data: GarmentListItemProps[] = [
 
 const Basic = () => (
   <Wrapper>
-    <GarmentList title='List title' data={data} />
+    <GarmentFormList title='List title' data={data} />
   </Wrapper>
 );

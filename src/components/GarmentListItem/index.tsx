@@ -4,11 +4,11 @@ import styled from "styled-components/native";
 const Container = styled.TouchableOpacity`
   height: 150px;
   width: 150px;
+  width: 100%;
   background: rgb(128, 128, 128);
   border-radius: 4px;
   display: flex;
   elevation: 4;
-  margin: 4px;
 `;
 
 const InfoContainer = styled.View`
@@ -21,11 +21,6 @@ const InfoContainer = styled.View`
   padding: 8px;
   display: flex;
   flex-direction: row;
-  align-content: space-between;
-`;
-
-const TextContainer = styled.View`
-  display: flex;
   align-content: space-between;
 `;
 
