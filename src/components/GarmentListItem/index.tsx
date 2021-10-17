@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const Container = styled.TouchableOpacity`
   height: 150px;
@@ -30,13 +31,32 @@ const StyledText = styled.Text`
   font-size: 18px;
 `;
 
+const FavoriteIcon = styled(Icon)`
+  font-size: 40px;
+  color: white;
+`;
+
+const IconContainer = styled.TouchableOpacity`
+  /* background-color: red; */
+  align-self: flex-end;
+  padding: 8px;
+`;
+
 export interface Props {
+  id: number;
   title: string;
+  onFavorite: (id: number) => void;
+  isFavorited?: boolean;
 }
 
-const GarmentListItem = ({ title = "Title" }: Props) => {
+const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
+  const iconName = isFavorited ? "heart" : "heart-outline";
+
   return (
     <Container>
+      <IconContainer onPress={() => onFavorite(id)}>
+        <FavoriteIcon name={iconName} />
+      </IconContainer>
       <InfoContainer>
         <StyledText>{title}</StyledText>
       </InfoContainer>

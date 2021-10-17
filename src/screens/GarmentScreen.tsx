@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 
 import {
@@ -7,28 +7,35 @@ import {
   GarmentListItemProps,
 } from "../components";
 
-const data: GarmentListItemProps[] = [
-  { title: "Item 1" },
-  { title: "Item 2" },
-  { title: "Item 3" },
-  { title: "Item 4" },
-  { title: "Item 5" },
-  { title: "Item 6" },
-  { title: "Item 7" },
-  { title: "Item 8" },
-  { title: "Item 9" },
-  { title: "Item 10" },
-  { title: "Item 11" },
-  { title: "Item 12" },
-  { title: "Item 13" },
-  { title: "Item 14" },
-  { title: "Item 15" },
+const garments = [
+  { id: 0, title: "Item 1", isFavorited: false },
+  { id: 1, title: "Item 2", isFavorited: false },
+  { id: 2, title: "Item 3", isFavorited: true },
+  { id: 3, title: "Item 4", isFavorited: false },
+  { id: 4, title: "Item 5", isFavorited: false },
+  { id: 5, title: "Item 6", isFavorited: false },
+  { id: 6, title: "Item 7", isFavorited: false },
+  { id: 7, title: "Item 8", isFavorited: false },
 ];
 
 function GarmentScreen({ navigation, route }) {
+  const [data, setData] = useState(garments);
+
+  const toggleFavorite = (item: GarmentListItemProps["id"]) => {
+    const toggledItem = data.find((i) => i.id === item);
+    if (!toggledItem) return;
+    const updatedData = data.filter((i) => i.id !== toggledItem.id);
+    setData(
+      [
+        ...updatedData,
+        { ...toggledItem, isFavorited: !toggledItem.isFavorited },
+      ].sort((a, b) => a.title.localeCompare(b.title))
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <GarmentList title='List title' data={data} />
+      <GarmentList title='List title' data={data} onFavorite={toggleFavorite} />
       <FloatingActionButton
         iconName='plus'
         onPress={() => navigation.navigate("GarmentForm")}

@@ -11,10 +11,18 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
-storiesOf("Garment List Item", module).add("Basic", () => <Basic />);
+storiesOf("Garment List Item", module)
+  .add("Basic", () => <Basic />)
+  .add("Favorited", () => <Favorited />);
 
 const Basic = () => (
   <Wrapper>
     <GarmentListItem title='Title' />
+  </Wrapper>
+);
+
+const Favorited = () => (
+  <Wrapper>
+    <GarmentListItem title='Favorited' isFavorited />
   </Wrapper>
 );

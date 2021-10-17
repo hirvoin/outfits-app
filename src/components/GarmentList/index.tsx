@@ -27,12 +27,13 @@ const ItemContainer = styled.View<ItemContainerProps>`
 interface Props {
   title: string;
   data: FlatListProps<GarmentListItemProps>["data"];
+  onFavorite: (id: GarmentListItemProps["id"]) => void;
 }
 
 const screen = Dimensions.get("screen");
 const width = screen.width / 2 - 16;
 
-const GarmentList = ({ title = "List title", data }: Props) => {
+const GarmentList = ({ title = "List title", data, onFavorite }: Props) => {
   const renderItem = ({
     item,
     index,
@@ -43,14 +44,21 @@ const GarmentList = ({ title = "List title", data }: Props) => {
     const isOdd = index % 2 === 0;
     return (
       <ItemContainer isOdd={isOdd} width={width}>
-        <GarmentListItem key={index} {...item} />
+        <GarmentListItem {...item} onFavorite={onFavorite} />
       </ItemContainer>
     );
   };
 
+  const keyExtractor = (item, index) => item.title.toString();
+
   return (
     <Container>
-      <FlatList data={data} numColumns={2} renderItem={renderItem} />
+      <FlatList
+        data={data}
+        numColumns={2}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+      />
     </Container>
   );
 };

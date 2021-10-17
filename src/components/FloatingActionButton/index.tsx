@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import { TouchableOpacityProps } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const Container = styled.View`
   bottom: 32px;
@@ -20,7 +20,7 @@ const Button = styled.TouchableOpacity`
   elevation: 4;
 `;
 
-const Icon = styled(MaterialCommunityIcons)`
+const ButtonIcon = styled(Icon)`
   font-size: 32px;
   color: white;
 `;
@@ -33,7 +33,7 @@ const NameInput = ({ iconName, onPress }: Props) => {
   return (
     <Container>
       <Button onPress={onPress}>
-        <Icon name={iconName} />
+        <ButtonIcon name={iconName} />
       </Button>
     </Container>
   );

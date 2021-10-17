@@ -35,14 +35,21 @@ const GarmentFormList = ({ title = "List title", data }: Props) => {
     index: number;
   }) => (
     <ItemContainer>
-      <GarmentListItem key={index} {...item} />
+      <GarmentListItem {...item} />
     </ItemContainer>
   );
+
+  const keyExtractor = (item, index) => item.title.toString();
 
   return (
     <Container>
       <StyledText>{title}</StyledText>
-      <FlatList horizontal data={data} renderItem={renderItem} />
+      <FlatList
+        horizontal
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={keyExtractor}
+      />
     </Container>
   );
 };
