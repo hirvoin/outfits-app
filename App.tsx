@@ -1,6 +1,9 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  getFocusedRouteNameFromRoute,
+} from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
@@ -25,13 +28,22 @@ function GarmentTabScreen() {
 
 const SettingsStack = createNativeStackNavigator();
 
-function GarmentStackScreen() {
+function GarmentStackScreen({ navigation, route }) {
+  React.useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName === "GarmentForm") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    }
+  }, [navigation, route]);
+
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen
         name='GarmentTab'
         component={GarmentTabScreen}
-        options={{ headerShadowVisible: false }}
+        options={{ headerShadowVisible: false, lazy: true }}
       />
       <SettingsStack.Screen name='GarmentForm' component={GarmentFormScreen} />
     </SettingsStack.Navigator>

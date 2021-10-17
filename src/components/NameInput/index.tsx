@@ -21,7 +21,7 @@ const Icon = styled(MaterialCommunityIcons)`
   margin-right: 8px;
 `;
 
-interface Props extends TextInputProps {}
+export interface Props extends TextInputProps {}
 
 const NameInput = (props: Props) => {
   return (
