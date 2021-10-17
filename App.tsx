@@ -1,80 +1,27 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Icon from "@expo/vector-icons/Ionicons";
 
+import OutfitScreen from "./src/screens/OutfitScreen";
+import GarmentFormScreen from "./src/screens/GarmentFormScreen";
+import GarmentScreen from "./src/screens/GarmentFormScreen";
+
 import StorybookUI from "./storybook";
 
 const GarmentTab = createMaterialTopTabNavigator();
 
-function TopScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Tops</Text>
-      <Button
-        title='Go to GarmentForm'
-        onPress={() => navigation.navigate("GarmentForm")}
-      />
-    </View>
-  );
-}
-
-function BottomScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Bottoms</Text>
-      <Button
-        title='Go to GarmentForm'
-        onPress={() => navigation.navigate("GarmentForm")}
-      />
-    </View>
-  );
-}
-
-function OuterwearScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Outerwear</Text>
-      <Button
-        title='Go to GarmentForm'
-        onPress={() => navigation.navigate("GarmentForm")}
-      />
-    </View>
-  );
-}
-
-function ShoeScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Shoes</Text>
-      <Button
-        title='Go to GarmentForm'
-        onPress={() => navigation.navigate("GarmentForm")}
-      />
-    </View>
-  );
-}
-
 function GarmentTabScreen() {
   return (
     <GarmentTab.Navigator>
-      <GarmentTab.Screen name='Outwear' component={OuterwearScreen} />
-      <GarmentTab.Screen name='Tops' component={TopScreen} />
-      <GarmentTab.Screen name='Bottoms' component={BottomScreen} />
-      <GarmentTab.Screen name='Shoes' component={ShoeScreen} />
+      <GarmentTab.Screen name='Outerwear' component={GarmentScreen} />
+      <GarmentTab.Screen name='Tops' component={GarmentScreen} />
+      <GarmentTab.Screen name='Bottoms' component={GarmentScreen} />
+      <GarmentTab.Screen name='Shoes' component={GarmentScreen} />
     </GarmentTab.Navigator>
-  );
-}
-
-function GarmentFormScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Garment Form</Text>
-    </View>
   );
 }
 
@@ -90,14 +37,6 @@ function GarmentStackScreen() {
       />
       <SettingsStack.Screen name='GarmentForm' component={GarmentFormScreen} />
     </SettingsStack.Navigator>
-  );
-}
-
-function OutfitScreen() {
-  return (
-    <View style={styles.container}>
-      <Text>Outfits</Text>
-    </View>
   );
 }
 
@@ -139,14 +78,5 @@ function App() {
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default false ? StorybookUI : App;
