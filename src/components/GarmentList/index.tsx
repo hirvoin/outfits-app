@@ -25,7 +25,6 @@ const ItemContainer = styled.View<ItemContainerProps>`
 `;
 
 interface Props {
-  title: string;
   data: FlatListProps<GarmentListItemProps>["data"];
   onFavorite: (id: GarmentListItemProps["id"]) => void;
 }
@@ -33,7 +32,7 @@ interface Props {
 const screen = Dimensions.get("screen");
 const width = screen.width / 2 - 16;
 
-const GarmentList = ({ title = "List title", data, onFavorite }: Props) => {
+const GarmentList = ({ data, onFavorite }: Props) => {
   const renderItem = ({
     item,
     index,

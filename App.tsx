@@ -43,7 +43,7 @@ function GarmentStackScreen({ navigation, route }) {
       <SettingsStack.Screen
         name='GarmentTab'
         component={GarmentTabScreen}
-        options={{ headerShadowVisible: false, lazy: true }}
+        options={{ headerShadowVisible: false }}
       />
       <SettingsStack.Screen name='GarmentForm' component={GarmentFormScreen} />
     </SettingsStack.Navigator>

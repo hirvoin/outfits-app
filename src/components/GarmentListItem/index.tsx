@@ -37,7 +37,6 @@ const FavoriteIcon = styled(Icon)`
 `;
 
 const IconContainer = styled.TouchableOpacity`
-  /* background-color: red; */
   align-self: flex-end;
   padding: 8px;
 `;
@@ -45,7 +44,7 @@ const IconContainer = styled.TouchableOpacity`
 export interface Props {
   id: number;
   title: string;
-  onFavorite: (id: number) => void;
+  onFavorite?: (id: number) => void;
   isFavorited?: boolean;
 }
 
@@ -54,9 +53,11 @@ const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
 
   return (
     <Container>
-      <IconContainer onPress={() => onFavorite(id)}>
-        <FavoriteIcon name={iconName} />
-      </IconContainer>
+      {onFavorite && (
+        <IconContainer onPress={() => onFavorite(id)}>
+          <FavoriteIcon name={iconName} />
+        </IconContainer>
+      )}
       <InfoContainer>
         <StyledText>{title}</StyledText>
       </InfoContainer>

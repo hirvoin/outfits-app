@@ -11,7 +11,7 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
-storiesOf("Text Input", module).add("Basic", () => <Basic />);
+storiesOf("Name Input", module).add("Basic", () => <Basic />);
 
 const Basic = () => {
   const [text, onChangeText] = useState("");

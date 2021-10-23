@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import {
   FloatingActionButton,
@@ -35,7 +35,7 @@ function GarmentScreen({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      <GarmentList title='List title' data={data} onFavorite={toggleFavorite} />
+      <GarmentList data={data} onFavorite={toggleFavorite} />
       <FloatingActionButton
         iconName='plus'
         onPress={() => navigation.navigate("GarmentForm")}

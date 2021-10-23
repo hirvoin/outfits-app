@@ -1,10 +1,29 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 
-function OutfitScreen() {
+import {
+  FloatingActionButton,
+  OutfitList,
+  OutfitListItemProps,
+} from "../components";
+
+const data: OutfitListItemProps[] = [
+  { id: 1, dateLabel: "Weekday 00.00.0000" },
+  { id: 2, dateLabel: "Weekday 00.00.0000" },
+  { id: 3, dateLabel: "Weekday 00.00.0000" },
+  { id: 4, dateLabel: "Weekday 00.00.0000" },
+  { id: 5, dateLabel: "Weekday 00.00.0000" },
+  { id: 6, dateLabel: "Weekday 00.00.0000" },
+];
+
+function GarmentScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
-      <Text>Outfits</Text>
+      <OutfitList data={data} />
+      <FloatingActionButton
+        iconName='plus'
+        onPress={() => navigation.navigate("GarmentForm")}
+      />
     </View>
   );
 }
@@ -18,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OutfitScreen;
+export default GarmentScreen;

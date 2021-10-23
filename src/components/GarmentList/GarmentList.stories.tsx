@@ -34,6 +34,6 @@ const data: GarmentListItemProps[] = [
 
 const Basic = () => (
   <Wrapper>
-    <GarmentList title='List title' data={data} />
+    <GarmentList data={data} />
   </Wrapper>
 );

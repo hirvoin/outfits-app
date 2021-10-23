@@ -17,12 +17,17 @@ storiesOf("Garment List Item", module)
 
 const Basic = () => (
   <Wrapper>
-    <GarmentListItem title='Title' />
+    <GarmentListItem id={1} title='Title' />
   </Wrapper>
 );
 
 const Favorited = () => (
   <Wrapper>
-    <GarmentListItem title='Favorited' isFavorited />
+    <GarmentListItem
+      id={1}
+      title='With onFavorite'
+      onFavorite={() => null}
+      isFavorited
+    />
   </Wrapper>
 );
