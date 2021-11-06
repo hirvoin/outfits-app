@@ -9,9 +9,34 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import Icon from "@expo/vector-icons/Ionicons";
 
-import { OutfitScreen, GarmentScreen, GarmentFormScreen } from "./src/screens";
+import {
+  OutfitScreen,
+  GarmentScreen,
+  GarmentFormScreen,
+  OutfitFormScreen,
+} from "./src/screens";
 
 import StorybookUI from "./storybook";
+
+const OutfitStack = createNativeStackNavigator();
+
+function OutfitStackScreen({ navigation, route }) {
+  React.useLayoutEffect(() => {
+    const routeName = getFocusedRouteNameFromRoute(route);
+    if (routeName === "OutfitForm") {
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
+    } else {
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+    }
+  }, [navigation, route]);
+
+  return (
+    <OutfitStack.Navigator>
+      <OutfitStack.Screen name='Outfits' component={OutfitScreen} />
+      <OutfitStack.Screen name='OutfitForm' component={OutfitFormScreen} />
+    </OutfitStack.Navigator>
+  );
+}
 
 const GarmentTab = createMaterialTopTabNavigator();
 
@@ -26,7 +51,7 @@ function GarmentTabScreen() {
   );
 }
 
-const SettingsStack = createNativeStackNavigator();
+const GarmentStack = createNativeStackNavigator();
 
 function GarmentStackScreen({ navigation, route }) {
   React.useLayoutEffect(() => {
@@ -39,14 +64,14 @@ function GarmentStackScreen({ navigation, route }) {
   }, [navigation, route]);
 
   return (
-    <SettingsStack.Navigator>
-      <SettingsStack.Screen
+    <GarmentStack.Navigator>
+      <GarmentStack.Screen
         name='GarmentTab'
         component={GarmentTabScreen}
         options={{ headerShadowVisible: false }}
       />
-      <SettingsStack.Screen name='GarmentForm' component={GarmentFormScreen} />
-    </SettingsStack.Navigator>
+      <GarmentStack.Screen name='GarmentForm' component={GarmentFormScreen} />
+    </GarmentStack.Navigator>
   );
 }
 
@@ -59,8 +84,9 @@ function App() {
       <Tab.Navigator>
         <Tab.Screen
           name='Outfit'
-          component={OutfitScreen}
+          component={OutfitStackScreen}
           options={{
+            headerShown: false,
             tabBarIcon: ({ focused }) => (
               <Icon
                 name={focused ? "md-shirt" : "md-shirt-outline"}

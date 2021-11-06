@@ -16,13 +16,13 @@ const data: OutfitListItemProps[] = [
   { id: 6, dateLabel: "Weekday 00.00.0000" },
 ];
 
-function GarmentScreen({ navigation, route }) {
+function OutfitScreen({ navigation, route }) {
   return (
     <View style={styles.container}>
       <OutfitList data={data} />
       <FloatingActionButton
         iconName='plus'
-        onPress={() => navigation.navigate("GarmentForm")}
+        onPress={() => navigation.navigate("OutfitForm")}
       />
     </View>
   );
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GarmentScreen;
+export default OutfitScreen;

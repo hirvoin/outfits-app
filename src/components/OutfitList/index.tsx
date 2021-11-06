@@ -13,7 +13,7 @@ const Container = styled.View`
 `;
 
 const ItemContainer = styled.View`
-  margin: 8px 0px;
+  margin: 4px 0px;
 `;
 
 export interface Props {
