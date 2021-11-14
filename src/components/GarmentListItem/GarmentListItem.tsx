@@ -9,14 +9,19 @@ const Container = styled.TouchableOpacity`
   background: rgb(128, 128, 128);
   border-radius: 4px;
   display: flex;
-  elevation: 4;
+`;
+
+const Image = styled.Image`
+  width: 150px;
+  height: 100%;
+  align-self: center;
 `;
 
 const InfoContainer = styled.View`
   margin-top: auto;
   height: 60px;
   width: 100%;
-  background: #0000005c;
+  background: #00000078;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   padding: 8px;
@@ -50,9 +55,11 @@ export interface Props {
 
 const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
   const iconName = isFavorited ? "heart" : "heart-outline";
+  const exampleImage = require("../../../assets/coat.jpg");
 
   return (
     <Container>
+      <Image source={exampleImage} />
       {onFavorite && (
         <IconContainer onPress={() => onFavorite(id)}>
           <FavoriteIcon name={iconName} />

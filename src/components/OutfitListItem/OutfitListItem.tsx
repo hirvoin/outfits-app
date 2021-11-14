@@ -7,7 +7,6 @@ const Container = styled.TouchableOpacity`
   border-radius: 4px;
   display: flex;
   justify-content: space-between;
-  elevation: 4;
 `;
 
 const GarmentRow = styled.View`
