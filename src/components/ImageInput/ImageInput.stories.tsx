@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react-native";
 import React, { useState } from "react";
 import styled from "styled-components/native";
 
-import NameInput from "./NameInput";
+import ImageInput from "./ImageInput";
 
 const Wrapper = styled.View`
   justify-content: center;
@@ -11,18 +11,12 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
-storiesOf("Name Input", module).add("Basic", () => <Basic />);
+storiesOf("ImageINput", module).add("Basic", () => <Basic />);
 
 const Basic = () => {
-  const [value, setValue] = useState("");
-
   return (
     <Wrapper>
-      <NameInput
-        value={value}
-        onChangeText={setValue}
-        placeholder='Type something...'
-      />
+      <ImageInput />
     </Wrapper>
   );
 };
