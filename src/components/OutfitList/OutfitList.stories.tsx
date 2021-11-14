@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react-native";
 import React from "react";
 import styled from "styled-components/native";
 
-import OutfitList from "./";
+import OutfitList from "./OutfitList";
 import { OutfitListItemProps } from "../";
 
 const Wrapper = styled.View`

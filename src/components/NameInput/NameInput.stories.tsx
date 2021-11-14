@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react-native";
 import React, { useState } from "react";
 import styled from "styled-components/native";
 
-import NameInput from "./";
+import NameInput from "./NameInput";
 
 const Wrapper = styled.View`
   justify-content: center;

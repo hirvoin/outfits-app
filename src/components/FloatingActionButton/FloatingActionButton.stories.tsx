@@ -2,7 +2,7 @@ import { storiesOf } from "@storybook/react-native";
 import React, { useState } from "react";
 import styled from "styled-components/native";
 
-import FloatingActionButton from "./";
+import FloatingActionButton from "./FloatingActionButton";
 
 const Wrapper = styled.View`
   justify-content: center;

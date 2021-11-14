@@ -4,7 +4,7 @@ import { FlatListProps, Dimensions, FlatList } from "react-native";
 
 import GarmentListItem, {
   Props as GarmentListItemProps,
-} from "../GarmentListItem";
+} from "../GarmentListItem/GarmentListItem";
 
 const Container = styled.View`
   width: 100%;

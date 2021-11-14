@@ -2,8 +2,8 @@ import { storiesOf } from "@storybook/react-native";
 import React from "react";
 import styled from "styled-components/native";
 
-import GarmentList from "./";
-import { Props as GarmentListItemProps } from "../GarmentListItem";
+import GarmentList from "./GarmentList";
+import { Props as GarmentListItemProps } from "../GarmentListItem/GarmentListItem";
 
 const Wrapper = styled.View`
   justify-content: center;
