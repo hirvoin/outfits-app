@@ -4,16 +4,15 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 const Container = styled.TouchableOpacity`
   height: 150px;
-  width: 150px;
   width: 100%;
   background: rgb(128, 128, 128);
   border-radius: 4px;
-  display: flex;
 `;
 
-const Image = styled.Image`
-  width: 150px;
+const GarmentImage = styled.Image`
+  width: 100%;
   height: 100%;
+  border-radius: 4px;
   align-self: center;
 `;
 
@@ -25,9 +24,7 @@ const InfoContainer = styled.View`
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   padding: 8px;
-  display: flex;
   flex-direction: row;
-  align-content: space-between;
 `;
 
 const StyledText = styled.Text`
@@ -38,12 +35,13 @@ const StyledText = styled.Text`
 
 const FavoriteIcon = styled(Icon)`
   font-size: 40px;
-  color: white;
+  color: ${(props) => props.theme.colors.background};
 `;
 
 const IconContainer = styled.TouchableOpacity`
-  align-self: flex-end;
+  margin-left: auto;
   padding: 8px;
+  align-self: center;
 `;
 
 export interface Props {
@@ -57,16 +55,18 @@ const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
   const iconName = isFavorited ? "heart" : "heart-outline";
   const exampleImage = require("../../../assets/coat.jpg");
 
+  console.log({ onFavorite });
+
   return (
     <Container>
-      <Image source={exampleImage} />
-      {onFavorite && (
-        <IconContainer onPress={() => onFavorite(id)}>
-          <FavoriteIcon name={iconName} />
-        </IconContainer>
-      )}
+      <GarmentImage source={exampleImage} />
       <InfoContainer>
         <StyledText>{title}</StyledText>
+        {onFavorite && (
+          <IconContainer onPress={() => onFavorite(id)}>
+            <FavoriteIcon name={iconName} />
+          </IconContainer>
+        )}
       </InfoContainer>
     </Container>
   );

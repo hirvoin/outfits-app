@@ -11,7 +11,7 @@ const Container = styled.View`
 
 const Button = styled.TouchableOpacity`
   font-size: 36px;
-  background-color: black;
+  background-color: ${(props) => props.theme.colors.tertiary};
   width: 56px;
   height: 56px;
   align-items: center;

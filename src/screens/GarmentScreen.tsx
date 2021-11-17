@@ -38,7 +38,9 @@ function GarmentScreen({ navigation, route }) {
       <GarmentList data={data} onFavorite={toggleFavorite} />
       <FloatingActionButton
         iconName='plus'
-        onPress={() => navigation.navigate("GarmentForm")}
+        onPress={() =>
+          navigation.navigate("GarmentForm", { category: route.name })
+        }
       />
     </View>
   );

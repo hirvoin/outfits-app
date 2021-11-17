@@ -7,13 +7,14 @@ import {
 
 const PickerContainer = styled.View`
   width: 100%;
-  background: rgb(184, 184, 184);
+  background-color: ${(props) => props.theme.colors.primary};
   padding: 16px 8px;
   border-radius: 4px;
 `;
 
 const Container = styled.View`
   width: 100%;
+  margin: 8px;
 `;
 
 const Label = styled.Text`

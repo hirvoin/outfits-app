@@ -5,3 +5,5 @@ export { default as NameInput, Props as NameInputProps } from './NameInput/NameI
 export { default as FloatingActionButton, Props as FloatingActionButtonProps } from './FloatingActionButton/FloatingActionButton';
 export { default as OutfitListItem, Props as OutfitListItemProps } from './OutfitListItem/OutfitListItem';
 export { default as OutfitList, Props as OutfitListProps } from './OutfitList/OutfitList'
+export { default as ImageInput, Props as ImageInputProps } from './ImageInput/ImageInput'
+export { default as PickerInput, Props as PickerInputProps, PickerItemProps } from './PickerInput/PickerInput'

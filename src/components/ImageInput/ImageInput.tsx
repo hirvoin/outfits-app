@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components/native";
-import { FloatingActionButton } from "../";
+import FloatingActionButton from "../FloatingActionButton/FloatingActionButton";
 
 const Container = styled.View`
+  margin: 8px;
   height: 300px;
   border-radius: 8px;
   width: 100%;
