@@ -55,8 +55,6 @@ const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
   const iconName = isFavorited ? "heart" : "heart-outline";
   const exampleImage = require("../../../assets/coat.jpg");
 
-  console.log({ onFavorite });
-
   return (
     <Container>
       <GarmentImage source={exampleImage} />

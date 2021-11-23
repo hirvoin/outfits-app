@@ -27,6 +27,20 @@ const Garment = styled.View`
   margin: 4px;
 `;
 
+const ImageContainer = styled.View`
+  width: 140px;
+  height: 120px;
+  border-radius: 4px;
+  margin: 4px;
+`;
+
+const GarmentImage = styled.Image`
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  align-self: center;
+`;
+
 const InfoContainer = styled.View`
   height: 50px;
   width: 100%;
@@ -48,14 +62,20 @@ export interface Props {
 }
 
 const GarmentListItem = ({ id, dateLabel }: Props) => {
+  const imageUri = "../../../assets/coat.jpg";
+  const exampleImage = require("../../../assets/coat.jpg");
+
+  const garments = [imageUri, imageUri, imageUri, imageUri];
+
+  const renderGarmentImage = (g: string, i: number) => (
+    <ImageContainer key={i}>
+      <GarmentImage source={exampleImage} />
+    </ImageContainer>
+  );
+
   return (
     <Container>
-      <GarmentRow>
-        <Garment />
-        <Garment />
-        <Garment />
-        <Garment />
-      </GarmentRow>
+      <GarmentRow>{garments.map(renderGarmentImage)}</GarmentRow>
       <InfoContainer>
         <StyledText>{dateLabel}</StyledText>
       </InfoContainer>

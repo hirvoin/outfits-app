@@ -1,10 +1,12 @@
 const light = {
   colors: {
-    primary: "#07004D",
-    secondary: "#2D82B7",
+    primary: "#E9B872",
+    secondary: "#6494AA",
     tertiary: "#42E2B8",
     background: "#F3DFBF",
-    black: "#EB8A90"
+    salmon: "#D62246",
+    white: "#F9F4F5",
+    black: "#343434"
   },
   fontSizes: {
     small: "12px",
