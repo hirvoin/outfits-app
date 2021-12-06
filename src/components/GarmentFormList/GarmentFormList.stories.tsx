@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react-native";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 
 import GarmentFormList from "./GarmentFormList";
@@ -14,7 +14,7 @@ const Wrapper = styled.View`
 
 storiesOf("Garment Form List", module).add("Basic", () => <Basic />);
 
-const data: GarmentListItemProps[] = [
+const garments: GarmentListItemProps[] = [
   { id: 1, title: "Item 1" },
   { id: 2, title: "Item 2" },
   { id: 3, title: "Item 3" },
@@ -32,8 +32,28 @@ const data: GarmentListItemProps[] = [
   { id: 15, title: "Item 15" },
 ];
 
-const Basic = () => (
-  <Wrapper>
-    <GarmentFormList title="List title" data={data} />
-  </Wrapper>
-);
+const Basic = () => {
+  const [data, setData] = useState(garments);
+
+  const toggleFavorite = (item: GarmentListItemProps["id"]) => {
+    const toggledItem = data.find((i) => i.id === item);
+    if (!toggledItem) return;
+
+    const copy = [...data];
+    const itemIndex = copy.indexOf(toggledItem);
+    const updatedItem = { ...toggledItem, isSelected: !toggledItem.isSelected };
+
+    copy.splice(itemIndex, 1, updatedItem);
+    setData(copy);
+  };
+
+  return (
+    <Wrapper>
+      <GarmentFormList
+        title="List title"
+        data={data}
+        onItemPress={toggleFavorite}
+      />
+    </Wrapper>
+  );
+};

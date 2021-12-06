@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react-native";
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
 
 import GarmentListItem from "./GarmentListItem";
@@ -13,7 +13,8 @@ const Wrapper = styled.View`
 
 storiesOf("Garment List Item", module)
   .add("Basic", () => <Basic />)
-  .add("Favorited", () => <Favorited />);
+  .add("Favorited", () => <Favorited />)
+  .add("Selected", () => <Selected />);
 
 const Basic = () => (
   <Wrapper>
@@ -31,3 +32,18 @@ const Favorited = () => (
     />
   </Wrapper>
 );
+
+const Selected = () => {
+  const [selected, setSelected] = useState(true);
+  const toggleSelected = () => setSelected(!selected);
+  return (
+    <Wrapper>
+      <GarmentListItem
+        id={1}
+        title="Selected"
+        isSelected={selected}
+        onPress={toggleSelected}
+      />
+    </Wrapper>
+  );
+};

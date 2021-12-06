@@ -49,21 +49,37 @@ export interface Props {
   title: string;
   onFavorite?: (id: number) => void;
   isFavorited?: boolean;
+  isSelected?: boolean;
+  onPress?: (id: number) => void;
 }
 
-const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
+const GarmentListItem = ({
+  id,
+  title,
+  isFavorited,
+  onFavorite,
+  isSelected,
+  onPress,
+}: Props) => {
   const iconName = isFavorited ? "heart" : "heart-outline";
   const exampleImage = require("../../../assets/coat.jpg");
+
   const handleFavorite = () => onFavorite?.(id);
+  const handlePress = () => onPress?.(id);
 
   return (
-    <Container>
+    <Container onPress={handlePress}>
       <GarmentImage source={exampleImage} />
       <InfoContainer>
         <StyledText>{title}</StyledText>
         {onFavorite && (
           <IconContainer onPress={handleFavorite}>
             <FavoriteIcon name={iconName} />
+          </IconContainer>
+        )}
+        {onPress && (
+          <IconContainer onPress={handlePress}>
+            {isSelected && <FavoriteIcon name="check-circle-outline" />}
           </IconContainer>
         )}
       </InfoContainer>

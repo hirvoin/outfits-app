@@ -24,18 +24,17 @@ const StyledText = styled.Text`
 interface Props {
   title: string;
   data: FlatListProps<GarmentListItemProps>["data"];
+  onItemPress: (id: GarmentListItemProps["id"]) => void;
 }
 
-const GarmentFormList = ({ title = "List title", data }: Props) => {
-  const renderItem = ({
-    item,
-    index,
-  }: {
-    item: GarmentListItemProps;
-    index: number;
-  }) => (
+const GarmentFormList = ({
+  title = "List title",
+  data,
+  onItemPress,
+}: Props) => {
+  const renderItem = ({ item }: { item: GarmentListItemProps }) => (
     <ItemContainer>
-      <GarmentListItem {...item} />
+      <GarmentListItem {...item} onPress={onItemPress} />
     </ItemContainer>
   );
 

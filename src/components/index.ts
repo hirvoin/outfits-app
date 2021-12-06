@@ -29,3 +29,7 @@ export {
   Props as PickerInputProps,
   PickerItemProps,
 } from "./PickerInput/PickerInput";
+export {
+  default as SubmitButton,
+  Props as SubmitButtonProps,
+} from "./SubmitButton/SubmitButton";
