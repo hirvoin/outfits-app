@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import {
   FloatingActionButton,
@@ -21,7 +21,7 @@ function OutfitScreen({ navigation, route }) {
     <View style={styles.container}>
       <OutfitList data={data} />
       <FloatingActionButton
-        iconName='plus'
+        iconName="plus"
         onPress={() => navigation.navigate("OutfitForm")}
       />
     </View>

@@ -21,7 +21,7 @@ const Basic = () => {
       <NameInput
         value={value}
         onChangeText={setValue}
-        placeholder='Type something...'
+        placeholder="Type something..."
       />
     </Wrapper>
   );

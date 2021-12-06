@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { FlatListProps, FlatList } from "react-native";
+import { FlatList, FlatListProps } from "react-native";
 
 import OutfitListItem, {
   Props as OutfitListItemProps,

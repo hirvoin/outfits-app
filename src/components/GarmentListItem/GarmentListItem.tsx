@@ -54,6 +54,7 @@ export interface Props {
 const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
   const iconName = isFavorited ? "heart" : "heart-outline";
   const exampleImage = require("../../../assets/coat.jpg");
+  const handleFavorite = () => onFavorite?.(id);
 
   return (
     <Container>
@@ -61,7 +62,7 @@ const GarmentListItem = ({ id, title, isFavorited, onFavorite }: Props) => {
       <InfoContainer>
         <StyledText>{title}</StyledText>
         {onFavorite && (
-          <IconContainer onPress={() => onFavorite(id)}>
+          <IconContainer onPress={handleFavorite}>
             <FavoriteIcon name={iconName} />
           </IconContainer>
         )}

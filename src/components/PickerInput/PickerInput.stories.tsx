@@ -27,7 +27,7 @@ const Basic = () => {
 
   return (
     <Wrapper>
-      <Picker value={value} items={items} setValue={setValue} label='Label' />
+      <Picker value={value} items={items} setValue={setValue} label="Label" />
     </Wrapper>
   );
 };

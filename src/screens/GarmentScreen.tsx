@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import {
   FloatingActionButton,
@@ -29,7 +29,7 @@ function GarmentScreen({ navigation, route }) {
       [
         ...updatedData,
         { ...toggledItem, isFavorited: !toggledItem.isFavorited },
-      ].sort((a, b) => a.title.localeCompare(b.title))
+      ].sort((a, b) => a.title.localeCompare(b.title)),
     );
   };
 
@@ -37,7 +37,7 @@ function GarmentScreen({ navigation, route }) {
     <View style={styles.container}>
       <GarmentList data={data} onFavorite={toggleFavorite} />
       <FloatingActionButton
-        iconName='plus'
+        iconName="plus"
         onPress={() =>
           navigation.navigate("GarmentForm", { category: route.name })
         }

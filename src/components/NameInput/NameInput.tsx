@@ -21,12 +21,12 @@ const Icon = styled(MaterialCommunityIcons)`
   margin-right: 8px;
 `;
 
-export interface Props extends TextInputProps {}
+export type Props = TextInputProps;
 
 const NameInput = (props: Props) => {
   return (
     <Container>
-      <Icon name='pencil' />
+      <Icon name="pencil" />
       <Input {...props} />
     </Container>
   );

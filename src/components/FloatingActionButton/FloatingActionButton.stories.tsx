@@ -18,7 +18,7 @@ const Basic = () => {
     <Wrapper>
       <FloatingActionButton
         onPress={() => console.log("onPress")}
-        iconName='plus'
+        iconName="plus"
       />
     </Wrapper>
   );

@@ -17,7 +17,7 @@ storiesOf("Garment List Item", module)
 
 const Basic = () => (
   <Wrapper>
-    <GarmentListItem id={1} title='Title' />
+    <GarmentListItem id={1} title="Title" />
   </Wrapper>
 );
 
@@ -25,7 +25,7 @@ const Favorited = () => (
   <Wrapper>
     <GarmentListItem
       id={1}
-      title='With onFavorite'
+      title="With onFavorite"
       onFavorite={() => null}
       isFavorited
     />

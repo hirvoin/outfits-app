@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components/native";
 
 import OutfitList from "./OutfitList";
-import { OutfitListItemProps } from "../";
+import { OutfitListItemProps } from "..";
 
 const Wrapper = styled.View`
   justify-content: center;

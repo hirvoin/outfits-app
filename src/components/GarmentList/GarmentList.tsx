@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
-import { FlatListProps, Dimensions, FlatList } from "react-native";
+import { Dimensions, FlatList, FlatListProps } from "react-native";
 
 import GarmentListItem, {
   Props as GarmentListItemProps,
@@ -19,7 +19,7 @@ interface ItemContainerProps {
 }
 
 const ItemContainer = styled.View<ItemContainerProps>`
-  width: ${(props) => props.width + "px"};
+  width: ${(props) => `${props.width}px`};
   margin-right: ${(props) => (props.isOdd ? "8px" : "0px")};
   margin-bottom: 8px;
 `;

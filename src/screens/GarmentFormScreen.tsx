@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { View, StyleSheet } from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, View } from "react-native";
 
 import {
-  PickerInput,
-  NameInput,
   ImageInput,
+  NameInput,
+  PickerInput,
   PickerItemProps,
 } from "../components";
 
@@ -31,20 +31,20 @@ function GarmentFormScreen({ navigation, route }) {
 
   useEffect(() => {
     setCategory(route.params.category.toLowerCase());
-  }, []);
+  }, [route.params.category]);
 
   return (
     <View style={styles.container}>
-      <NameInput placeholder='Image name...' />
+      <NameInput placeholder="Image name..." />
       <ImageInput />
       <PickerInput
-        label='Category'
+        label="Category"
         items={categories}
         value={category}
         setValue={setCategory}
       />
       <PickerInput
-        label='Color'
+        label="Color"
         items={colorItems}
         value={color}
         setValue={setColor}

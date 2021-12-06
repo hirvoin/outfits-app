@@ -21,7 +21,7 @@ const Label = styled.Text`
   padding-left: 16px;
 `;
 
-export interface PickerItemProps extends RNPPickerItemProps {}
+export type PickerItemProps = RNPPickerItemProps;
 
 export interface Props {
   label: string;

@@ -24,7 +24,7 @@ const ImageInput = ({}: Props) => {
   return (
     <Container>
       <StyledImage source={exampleImage} />
-      <FloatingActionButton iconName='pencil' />
+      <FloatingActionButton iconName="pencil" />
     </Container>
   );
 };

@@ -7,18 +7,18 @@ import {
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import Icon from "@expo/vector-icons/Ionicons";
 import { ThemeProvider } from "styled-components/native";
+import Icon from "@expo/vector-icons/Ionicons";
 
+import { useTheme } from "styled-components";
 import StorybookUI from "./storybook";
 import {
-  OutfitScreen,
-  GarmentScreen,
   GarmentFormScreen,
+  GarmentScreen,
   OutfitFormScreen,
+  OutfitScreen,
 } from "./src/screens";
 import light from "./src/themes/light";
-import { useTheme } from "styled-components";
 
 const OutfitStack = createNativeStackNavigator();
 
@@ -46,8 +46,8 @@ function OutfitStackScreen({ navigation, route }) {
         headerTintColor: theme.colors.white,
       }}
     >
-      <OutfitStack.Screen name='Outfits' component={OutfitScreen} />
-      <OutfitStack.Screen name='OutfitForm' component={OutfitFormScreen} />
+      <OutfitStack.Screen name="Outfits" component={OutfitScreen} />
+      <OutfitStack.Screen name="OutfitForm" component={OutfitFormScreen} />
     </OutfitStack.Navigator>
   );
 }
@@ -70,10 +70,10 @@ function GarmentTabScreen() {
         },
       }}
     >
-      <GarmentTab.Screen name='Outerwear' component={GarmentScreen} />
-      <GarmentTab.Screen name='Tops' component={GarmentScreen} />
-      <GarmentTab.Screen name='Bottoms' component={GarmentScreen} />
-      <GarmentTab.Screen name='Shoes' component={GarmentScreen} />
+      <GarmentTab.Screen name="Outerwear" component={GarmentScreen} />
+      <GarmentTab.Screen name="Tops" component={GarmentScreen} />
+      <GarmentTab.Screen name="Bottoms" component={GarmentScreen} />
+      <GarmentTab.Screen name="Shoes" component={GarmentScreen} />
     </GarmentTab.Navigator>
   );
 }
@@ -105,13 +105,13 @@ function GarmentStackScreen({ navigation, route }) {
       }}
     >
       <GarmentStack.Screen
-        name='GarmentTab'
+        name="GarmentTab"
         component={GarmentTabScreen}
         options={{
           headerShadowVisible: false,
         }}
       />
-      <GarmentStack.Screen name='GarmentForm' component={GarmentFormScreen} />
+      <GarmentStack.Screen name="GarmentForm" component={GarmentFormScreen} />
     </GarmentStack.Navigator>
   );
 }
@@ -123,7 +123,7 @@ function MainTabs() {
 
   return (
     <NavigationContainer>
-      <StatusBar style='auto' />
+      <StatusBar style="auto" />
       <Tab.Navigator
         barStyle={{
           backgroundColor: theme.colors.black,
@@ -133,7 +133,7 @@ function MainTabs() {
         }}
       >
         <Tab.Screen
-          name='Outfit'
+          name="Outfit"
           component={OutfitStackScreen}
           options={{
             tabBarIcon: ({ focused }) => (
@@ -146,7 +146,7 @@ function MainTabs() {
           }}
         />
         <Tab.Screen
-          name='Garment'
+          name="Garment"
           component={GarmentStackScreen}
           options={{
             tabBarIcon: ({ focused }) => (
@@ -179,4 +179,4 @@ function Storybook() {
   );
 }
 
-export default false ? Storybook : App;
+export default true ? Storybook : App;
