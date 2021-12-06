@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ScrollView, StyleSheet, Text } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import {
   GarmentFormList,
   GarmentListItemProps,
@@ -39,32 +39,42 @@ function OutfitFormScreen({ navigation, route }) {
     setData(copy);
   };
 
+  const handleSubmit = () => navigation.goBack();
+
   return (
-    <ScrollView style={styles.container}>
-      <GarmentFormList
-        title="Outerwear"
-        data={data}
-        onItemPress={toggleFavorite}
-      />
-      <GarmentFormList title="Tops" data={data} onItemPress={toggleFavorite} />
-      <GarmentFormList
-        title="Bottoms"
-        data={data}
-        onItemPress={toggleFavorite}
-      />
-      <GarmentFormList title="Shoes" data={data} onItemPress={toggleFavorite} />
-      <SubmitButton label="Submit" />
-    </ScrollView>
+    <View style={styles.container}>
+      <ScrollView style={styles.scrollContainer}>
+        <GarmentFormList
+          title="Outerwear"
+          data={data}
+          onItemPress={toggleFavorite}
+        />
+        <GarmentFormList
+          title="Tops"
+          data={data}
+          onItemPress={toggleFavorite}
+        />
+        <GarmentFormList
+          title="Bottoms"
+          data={data}
+          onItemPress={toggleFavorite}
+        />
+        <GarmentFormList
+          title="Shoes"
+          data={data}
+          onItemPress={toggleFavorite}
+        />
+      </ScrollView>
+      <SubmitButton label="Submit outfit" onPress={handleSubmit} />
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
   },
+  scrollContainer: {},
 });
 
 export default OutfitFormScreen;

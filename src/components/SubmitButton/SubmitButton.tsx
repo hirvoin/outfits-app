@@ -3,10 +3,8 @@ import { TouchableOpacityProps } from "react-native";
 import styled from "styled-components/native";
 
 const ButtonContainer = styled.TouchableOpacity`
-  width: 100%;
-  background-color: ${(props) => props.theme.colors.tertiary};
   border-radius: 4px;
-  display: flex;
+  background-color: ${(props) => props.theme.colors.tertiary};
   padding: 12px;
   margin: 8px;
 `;

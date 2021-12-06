@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 
 import {
   ImageInput,
   NameInput,
   PickerInput,
   PickerItemProps,
+  SubmitButton,
 } from "../components";
 
 const colorItems: PickerItemProps[] = [
@@ -33,32 +34,37 @@ function GarmentFormScreen({ navigation, route }) {
     setCategory(route.params.category.toLowerCase());
   }, [route.params.category]);
 
+  const handleSubmit = () => navigation.goBack();
+
   return (
     <View style={styles.container}>
-      <NameInput placeholder="Image name..." />
-      <ImageInput />
-      <PickerInput
-        label="Category"
-        items={categories}
-        value={category}
-        setValue={setCategory}
-      />
-      <PickerInput
-        label="Color"
-        items={colorItems}
-        value={color}
-        setValue={setColor}
-      />
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <NameInput placeholder="Garment name..." />
+        <ImageInput />
+        <PickerInput
+          label="Category"
+          items={categories}
+          value={category}
+          setValue={setCategory}
+        />
+        <PickerInput
+          label="Color"
+          items={colorItems}
+          value={color}
+          setValue={setColor}
+        />
+      </ScrollView>
+      <SubmitButton label="Add garment" onPress={handleSubmit} />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingVertical: 12,
+  container: { flex: 1, backgroundColor: "#fff" },
+  scrollContainer: {
+    paddingVertical: 8,
     paddingHorizontal: 8,
-    flex: 1,
-    backgroundColor: "#fff",
+
     alignItems: "center",
     justifyContent: "flex-start",
   },

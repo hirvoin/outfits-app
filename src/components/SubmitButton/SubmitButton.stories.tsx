@@ -9,6 +9,7 @@ const Wrapper = styled.View`
   align-items: center;
   display: flex;
   height: 100%;
+  width: 100%;
 `;
 
 storiesOf("Submit Button", module).add("Basic", () => <Basic />);
