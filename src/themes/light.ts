@@ -1,4 +1,27 @@
-const light = {
+import { DefaultTheme } from "styled-components/native";
+
+declare module "styled-components" {
+  export interface DefaultTheme {
+    colors: {
+      primary: string;
+      secondary: string;
+      tertiary: string;
+      background: string;
+      salmon: string;
+      white: string;
+      black: string;
+    };
+    fontSizes: {
+      small: string;
+      medium: string;
+      large: string;
+      xlarge: string;
+      xxlarge: string;
+    };
+  }
+}
+
+const light: DefaultTheme = {
   colors: {
     primary: "#E9B872",
     secondary: "#6494AA",

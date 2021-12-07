@@ -1,10 +1,16 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
+
 import {
   NavigationContainer,
   getFocusedRouteNameFromRoute,
 } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import {
+  NativeStackScreenProps,
+  createNativeStackNavigator,
+} from "@react-navigation/native-stack";
+
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { ThemeProvider } from "styled-components/native";
@@ -20,17 +26,25 @@ import {
 } from "./src/screens";
 import light from "./src/themes/light";
 
-const OutfitStack = createNativeStackNavigator();
+type OutfitStackScreenParams = {
+  OutfitTab: undefined;
+  OutfitForm: undefined;
+};
 
-function OutfitStackScreen({ navigation, route }) {
+const OutfitStack = createNativeStackNavigator<OutfitStackScreenParams>();
+
+function OutfitStackScreen({
+  navigation,
+  route,
+}: NativeStackScreenProps<OutfitStackScreenParams>) {
   const theme = useTheme();
 
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "OutfitForm") {
-      navigation.setOptions({ tabBarStyle: { display: "none" } });
+      // navigation.setOptions({ barStyle: { display: "none" } });
     } else {
-      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+      // navigation.setOptions({ barStyle: { display: "flex" } });
     }
   }, [navigation, route]);
 
@@ -46,16 +60,24 @@ function OutfitStackScreen({ navigation, route }) {
         headerTintColor: theme.colors.white,
       }}
     >
-      <OutfitStack.Screen name="Outfits" component={OutfitScreen} />
+      <OutfitStack.Screen name="OutfitTab" component={OutfitScreen} />
       <OutfitStack.Screen name="OutfitForm" component={OutfitFormScreen} />
     </OutfitStack.Navigator>
   );
 }
 
-const GarmentTab = createMaterialTopTabNavigator();
+type GarmentTabsParamList = {
+  Outerwear: undefined;
+  Tops: undefined;
+  Bottoms: undefined;
+  Shoes: undefined;
+};
+
+const GarmentTab = createMaterialTopTabNavigator<GarmentTabsParamList>();
 
 function GarmentTabScreen() {
   const theme = useTheme();
+
   return (
     <GarmentTab.Navigator
       screenOptions={{
@@ -78,17 +100,25 @@ function GarmentTabScreen() {
   );
 }
 
-const GarmentStack = createNativeStackNavigator();
+type GarmentStackParamList = {
+  GarmentTab: undefined;
+  GarmentForm: undefined;
+};
 
-function GarmentStackScreen({ navigation, route }) {
+const GarmentStack = createNativeStackNavigator<GarmentStackParamList>();
+
+function GarmentStackScreen({
+  navigation,
+  route,
+}: NativeStackScreenProps<GarmentStackParamList>) {
   const theme = useTheme();
 
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "GarmentForm") {
-      navigation.setOptions({ barStyle: { display: "none" } });
+      // navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
-      navigation.setOptions({ tabBarStyle: { display: "flex" } });
+      // navigation.setOptions({ tabBarStyle: { display: "flex" } });
     }
   }, [navigation, route]);
 
@@ -116,17 +146,24 @@ function GarmentStackScreen({ navigation, route }) {
   );
 }
 
-const Tab = createMaterialBottomTabNavigator();
+type MainTabsParamList = {
+  Outfit: undefined;
+  Garment: undefined;
+};
+
+const Tab = createMaterialBottomTabNavigator<MainTabsParamList>();
 
 function MainTabs() {
   const theme = useTheme();
 
   return (
     <NavigationContainer>
+      {/* eslint-disable-next-line react/style-prop-object */}
       <StatusBar style="auto" />
       <Tab.Navigator
         barStyle={{
           backgroundColor: theme.colors.black,
+          // display: "none",
         }}
         screenOptions={{
           tabBarColor: theme.colors.black,
