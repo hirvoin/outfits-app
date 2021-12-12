@@ -11,8 +11,9 @@ import {
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
 
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { ThemeProvider } from "styled-components/native";
 import Icon from "@expo/vector-icons/Ionicons";
 
@@ -42,9 +43,9 @@ function OutfitStackScreen({
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "OutfitForm") {
-      // navigation.setOptions({ barStyle: { display: "none" } });
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
-      // navigation.setOptions({ barStyle: { display: "flex" } });
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
     }
   }, [navigation, route]);
 
@@ -116,9 +117,9 @@ function GarmentStackScreen({
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
     if (routeName === "GarmentForm") {
-      // navigation.setOptions({ tabBarStyle: { display: "none" } });
+      navigation.setOptions({ tabBarStyle: { display: "none" } });
     } else {
-      // navigation.setOptions({ tabBarStyle: { display: "flex" } });
+      navigation.setOptions({ tabBarStyle: { display: "flex" } });
     }
   }, [navigation, route]);
 
@@ -151,7 +152,7 @@ type MainTabsParamList = {
   Garment: undefined;
 };
 
-const Tab = createMaterialBottomTabNavigator<MainTabsParamList>();
+const Tab = createBottomTabNavigator<MainTabsParamList>();
 
 function MainTabs() {
   const theme = useTheme();
@@ -161,12 +162,12 @@ function MainTabs() {
       {/* eslint-disable-next-line react/style-prop-object */}
       <StatusBar style="auto" />
       <Tab.Navigator
-        barStyle={{
-          backgroundColor: theme.colors.black,
-          // display: "none",
-        }}
         screenOptions={{
-          tabBarColor: theme.colors.black,
+          headerShown: false,
+          tabBarStyle: { position: "absolute" },
+          tabBarActiveBackgroundColor: theme.colors.black,
+          tabBarInactiveBackgroundColor: theme.colors.black,
+          tabBarLabelStyle: { color: theme.colors.white },
         }}
       >
         <Tab.Screen
@@ -180,6 +181,7 @@ function MainTabs() {
                 color={theme.colors.white}
               />
             ),
+            // tabBarStyle: { height: 200 },
           }}
         />
         <Tab.Screen

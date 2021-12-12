@@ -48,7 +48,7 @@ const GarmentList = ({ data, onFavorite }: Props) => {
     );
   };
 
-  const keyExtractor = (item, index) => item.title.toString();
+  const keyExtractor = (item: GarmentListItemProps) => item.title.toString();
 
   return (
     <Container>

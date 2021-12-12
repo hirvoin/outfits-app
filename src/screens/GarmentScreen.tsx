@@ -1,41 +1,62 @@
-import React, { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { useEffect, useState } from "react";
+import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { useTheme } from "styled-components";
 
+import garmentsService, { Garment } from "../services/garments";
 import {
   FloatingActionButton,
   GarmentList,
   GarmentListItemProps,
 } from "../components";
 
-const garments = [
-  { id: 0, title: "Item 1", isFavorited: false },
-  { id: 1, title: "Item 2", isFavorited: false },
-  { id: 2, title: "Item 3", isFavorited: true },
-  { id: 3, title: "Item 4", isFavorited: false },
-  { id: 4, title: "Item 5", isFavorited: false },
-  { id: 5, title: "Item 6", isFavorited: false },
-  { id: 6, title: "Item 7", isFavorited: false },
-  { id: 7, title: "Item 8", isFavorited: false },
-];
-
 function GarmentScreen({ navigation, route }) {
-  const [data, setData] = useState(garments);
+  const [garments, setGarments] = useState<Garment[]>([]);
+  const theme = useTheme();
+
+  const getEndpoint = (routeName: string) => {
+    switch (routeName) {
+      case "Outerwear":
+        return garmentsService.getOuterwear;
+      case "Tops":
+        return garmentsService.getTops;
+      case "Bottoms":
+        return garmentsService.getBottoms;
+      case "Shoes":
+        return garmentsService.getFootwear;
+      default:
+        return garmentsService.getOuterwear;
+    }
+  };
+
+  useEffect(() => {
+    const fetchGarments = async () => {
+      const data = await getEndpoint(route.name)();
+      setGarments(data);
+    };
+    fetchGarments();
+  }, [route]);
 
   const toggleFavorite = (item: GarmentListItemProps["id"]) => {
-    const toggledItem = data.find((i) => i.id === item);
+    const toggledItem = garments.find((i) => i.id === item);
     if (!toggledItem) return;
-    const updatedData = data.filter((i) => i.id !== toggledItem.id);
-    setData(
-      [
-        ...updatedData,
-        { ...toggledItem, isFavorited: !toggledItem.isFavorited },
-      ].sort((a, b) => a.title.localeCompare(b.title)),
-    );
+
+    const copy = [...garments];
+    const itemIndex = copy.indexOf(toggledItem);
+    const updatedItem = {
+      ...toggledItem,
+      isFavorited: !toggledItem.isFavorited,
+    };
+
+    copy.splice(itemIndex, 1, updatedItem);
+    setGarments(copy);
   };
 
   return (
     <View style={styles.container}>
-      <GarmentList data={data} onFavorite={toggleFavorite} />
+      {garments.length < 1 && (
+        <ActivityIndicator color={theme.colors.primary} size="large" />
+      )}
+      <GarmentList data={garments} onFavorite={toggleFavorite} />
       <FloatingActionButton
         iconName="plus"
         onPress={() =>

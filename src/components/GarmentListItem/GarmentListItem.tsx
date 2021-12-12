@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
+import { ImageSourcePropType } from "react-native";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+
+import { Garment } from "../../services/garments";
 
 const Container = styled.TouchableOpacity`
   height: 150px;
@@ -44,32 +47,29 @@ const IconContainer = styled.TouchableOpacity`
   align-self: center;
 `;
 
-export interface Props {
-  id: number;
-  title: string;
-  onFavorite?: (id: number) => void;
-  isFavorited?: boolean;
+export interface Props extends Garment {
   isSelected?: boolean;
+  onFavorite?: (id: number) => void;
   onPress?: (id: number) => void;
 }
 
 const GarmentListItem = ({
-  id,
   title,
+  id,
   isFavorited,
+  image,
   onFavorite,
   isSelected,
   onPress,
 }: Props) => {
   const iconName = isFavorited ? "heart" : "heart-outline";
-  const exampleImage = require("../../../assets/coat.jpg");
 
   const handleFavorite = () => onFavorite?.(id);
   const handlePress = () => onPress?.(id);
 
   return (
     <Container onPress={handlePress}>
-      <GarmentImage source={exampleImage} />
+      <GarmentImage source={{ uri: image }} />
       <InfoContainer>
         <StyledText>{title}</StyledText>
         {onFavorite && (

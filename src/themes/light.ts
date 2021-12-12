@@ -1,24 +1,31 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import { DefaultTheme } from "styled-components/native";
 
+export interface Theme {
+  colors: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    background: string;
+    salmon: string;
+    white: string;
+    black: string;
+  };
+  fontSizes: {
+    small: string;
+    medium: string;
+    large: string;
+    xlarge: string;
+    xxlarge: string;
+  };
+}
+
 declare module "styled-components" {
-  export interface DefaultTheme {
-    colors: {
-      primary: string;
-      secondary: string;
-      tertiary: string;
-      background: string;
-      salmon: string;
-      white: string;
-      black: string;
-    };
-    fontSizes: {
-      small: string;
-      medium: string;
-      large: string;
-      xlarge: string;
-      xxlarge: string;
-    };
-  }
+  export interface DefaultTheme extends Theme {}
+}
+
+declare module "styled-components/native" {
+  export interface DefaultTheme extends Theme {}
 }
 
 const light: DefaultTheme = {

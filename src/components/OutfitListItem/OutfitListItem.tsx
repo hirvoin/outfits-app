@@ -2,34 +2,20 @@ import React from "react";
 import styled from "styled-components/native";
 
 const Container = styled.TouchableOpacity`
-  width: 100%;
   background: rgb(184, 184, 184);
   border-radius: 4px;
-  display: flex;
-  justify-content: space-between;
 `;
 
-const GarmentRow = styled.View`
-  flex-grow: 1;
-  margin: 8px 12px;
-  display: flex;
+const GarmentGrid = styled.View`
+  margin: 8px;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
   flex-wrap: wrap;
 `;
 
-const Garment = styled.View`
-  width: 140px;
-  height: 120px;
-  background-color: blue;
-  border-radius: 4px;
-  margin: 4px;
-`;
-
 const ImageContainer = styled.View`
-  width: 140px;
-  height: 120px;
+  width: 160px;
+  height: 140px;
   border-radius: 4px;
   margin: 4px;
 `;
@@ -38,7 +24,6 @@ const GarmentImage = styled.Image`
   width: 100%;
   height: 100%;
   border-radius: 4px;
-  align-self: center;
 `;
 
 const InfoContainer = styled.View`
@@ -52,8 +37,8 @@ const InfoContainer = styled.View`
 `;
 
 const StyledText = styled.Text`
-  color: white;
-  font-size: 14px;
+  font-size: ${(props) => props.theme.fontSizes.medium};
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export interface Props {
@@ -63,19 +48,18 @@ export interface Props {
 
 const GarmentListItem = ({ id, dateLabel }: Props) => {
   const imageUri = "../../../assets/coat.jpg";
-  const exampleImage = require("../../../assets/coat.jpg");
 
   const garments = [imageUri, imageUri, imageUri, imageUri];
 
   const renderGarmentImage = (g: string, i: number) => (
     <ImageContainer key={i}>
-      <GarmentImage source={exampleImage} />
+      <GarmentImage source={require(imageUri)} />
     </ImageContainer>
   );
 
   return (
     <Container>
-      <GarmentRow>{garments.map(renderGarmentImage)}</GarmentRow>
+      <GarmentGrid>{garments.map(renderGarmentImage)}</GarmentGrid>
       <InfoContainer>
         <StyledText>{dateLabel}</StyledText>
       </InfoContainer>

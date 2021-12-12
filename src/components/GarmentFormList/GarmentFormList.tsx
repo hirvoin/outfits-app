@@ -1,6 +1,6 @@
 import React from "react";
-import styled from "styled-components/native";
-import { FlatList, FlatListProps } from "react-native";
+import styled, { useTheme } from "styled-components/native";
+import { ActivityIndicator, FlatList, FlatListProps } from "react-native";
 
 import GarmentListItem, {
   Props as GarmentListItemProps,
@@ -27,22 +27,22 @@ interface Props {
   onItemPress: (id: GarmentListItemProps["id"]) => void;
 }
 
-const GarmentFormList = ({
-  title = "List title",
-  data,
-  onItemPress,
-}: Props) => {
+const GarmentFormList = ({ title, data = [], onItemPress }: Props) => {
+  const theme = useTheme();
   const renderItem = ({ item }: { item: GarmentListItemProps }) => (
     <ItemContainer>
       <GarmentListItem {...item} onPress={onItemPress} />
     </ItemContainer>
   );
 
-  const keyExtractor = (item, index) => item.title.toString();
+  const keyExtractor = (item: GarmentListItemProps) => item.title.toString();
 
   return (
     <Container>
       <StyledText>{title}</StyledText>
+      {data?.length < 1 && (
+        <ActivityIndicator color={theme.colors.primary} size="large" />
+      )}
       <FlatList
         horizontal
         data={data}

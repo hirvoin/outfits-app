@@ -12,7 +12,7 @@ const ButtonContainer = styled.TouchableOpacity`
 const Label = styled.Text`
   text-align: center;
   font-size: ${(props) => props.theme.fontSizes.medium};
-  color: white;
+  color: ${(props) => props.theme.colors.white};
 `;
 
 export interface Props extends TouchableOpacityProps {
