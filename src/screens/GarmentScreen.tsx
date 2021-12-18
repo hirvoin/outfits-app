@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
-import { useTheme } from "styled-components";
+import { useTheme } from "styled-components/native";
 
 import garmentsService, { Garment } from "../services/garments";
 import {

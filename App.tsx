@@ -5,19 +5,17 @@ import {
   NavigationContainer,
   getFocusedRouteNameFromRoute,
 } from "@react-navigation/native";
-
 import {
   NativeStackScreenProps,
   createNativeStackNavigator,
 } from "@react-navigation/native-stack";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import { ThemeProvider } from "styled-components/native";
+
+import { ThemeProvider, useTheme } from "styled-components/native";
 import Icon from "@expo/vector-icons/Ionicons";
 
-import { useTheme } from "styled-components";
 import StorybookUI from "./storybook";
 import {
   GarmentFormScreen,
@@ -181,7 +179,6 @@ function MainTabs() {
                 color={theme.colors.white}
               />
             ),
-            // tabBarStyle: { height: 200 },
           }}
         />
         <Tab.Screen
