@@ -57,7 +57,7 @@ const GarmentListItem = ({
   title,
   id,
   isFavorited,
-  image,
+  imageUri,
   onFavorite,
   isSelected,
   onPress,
@@ -69,7 +69,7 @@ const GarmentListItem = ({
 
   return (
     <Container onPress={handlePress}>
-      <GarmentImage source={{ uri: image }} />
+      <GarmentImage source={{ uri: imageUri }} />
       <InfoContainer>
         <StyledText>{title}</StyledText>
         {onFavorite && (

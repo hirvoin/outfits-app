@@ -15,6 +15,6 @@ storiesOf("Outfit List Item", module).add("Basic", () => <Basic />);
 
 const Basic = () => (
   <Wrapper>
-    <OutfitListItem id={1} dateLabel="Weekday 00.00.0000" />
+    <OutfitListItem id={1} date="Weekday 00.00.0000" />
   </Wrapper>
 );

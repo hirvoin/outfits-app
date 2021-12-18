@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components/native";
+import { GarmentListItemProps } from "..";
 
 const Container = styled.TouchableOpacity`
   background: rgb(184, 184, 184);
@@ -41,27 +42,30 @@ const StyledText = styled.Text`
   color: ${(props) => props.theme.colors.white};
 `;
 
+type OutfitListGarment = Pick<GarmentListItemProps, "imageUri" | "id">;
+
 export interface Props {
   id: number;
-  dateLabel: string;
+  date: string;
+  garments: OutfitListGarment[];
 }
 
-const GarmentListItem = ({ id, dateLabel }: Props) => {
+const GarmentListItem = ({ id, date, garments }: Props) => {
   const imageUri = "../../../assets/coat.jpg";
 
-  const garments = [imageUri, imageUri, imageUri, imageUri];
-
-  const renderGarmentImage = (g: string, i: number) => (
-    <ImageContainer key={i}>
-      <GarmentImage source={require(imageUri)} />
-    </ImageContainer>
-  );
+  const renderGarmentImage = (g: OutfitListGarment) => {
+    return (
+      <ImageContainer key={g.id}>
+        <GarmentImage source={{ uri: g.imageUri }} />
+      </ImageContainer>
+    );
+  };
 
   return (
     <Container>
       <GarmentGrid>{garments.map(renderGarmentImage)}</GarmentGrid>
       <InfoContainer>
-        <StyledText>{dateLabel}</StyledText>
+        <StyledText>{date}</StyledText>
       </InfoContainer>
     </Container>
   );

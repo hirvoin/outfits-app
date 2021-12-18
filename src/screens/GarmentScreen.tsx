@@ -2,39 +2,43 @@ import React, { useEffect, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { useTheme } from "styled-components/native";
 
-import garmentsService, { Garment } from "../services/garments";
+import useQuery from "../hooks/useQuery";
+import { Garment } from "../services/garments";
 import {
   FloatingActionButton,
   GarmentList,
   GarmentListItemProps,
 } from "../components";
 
+enum Category {
+  Tops = "tops",
+  Outerwear = "outerwear",
+  Footwear = "footwear",
+  Bottoms = "bottoms",
+}
+
+const GARMENTS_QUERY = `query Garments($category: String) {
+  garments(category:$category) {
+    id,
+    title,
+    category,
+    imageUri 
+  }
+}
+`;
+
 function GarmentScreen({ navigation, route }) {
   const [garments, setGarments] = useState<Garment[]>([]);
   const theme = useTheme();
-
-  const getEndpoint = (routeName: string) => {
-    switch (routeName) {
-      case "Outerwear":
-        return garmentsService.getOuterwear;
-      case "Tops":
-        return garmentsService.getTops;
-      case "Bottoms":
-        return garmentsService.getBottoms;
-      case "Shoes":
-        return garmentsService.getFootwear;
-      default:
-        return garmentsService.getOuterwear;
-    }
-  };
+  const category =
+    route.name === "Shoes" ? "footwear" : route.name.toLowerCase();
+  const { loading, data } = useQuery(GARMENTS_QUERY, {
+    category,
+  });
 
   useEffect(() => {
-    const fetchGarments = async () => {
-      const data = await getEndpoint(route.name)();
-      setGarments(data);
-    };
-    fetchGarments();
-  }, [route]);
+    setGarments(data.garments);
+  }, [data]);
 
   const toggleFavorite = (item: GarmentListItemProps["id"]) => {
     const toggledItem = garments.find((i) => i.id === item);
@@ -53,7 +57,7 @@ function GarmentScreen({ navigation, route }) {
 
   return (
     <View style={styles.container}>
-      {garments.length < 1 && (
+      {loading && (
         <ActivityIndicator color={theme.colors.primary} size="large" />
       )}
       <GarmentList data={garments} onFavorite={toggleFavorite} />

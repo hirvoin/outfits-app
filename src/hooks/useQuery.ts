@@ -7,7 +7,10 @@ interface QueryResult {
   error: any;
 }
 
-const useQuery = (query: string, variables?: any): QueryResult => {
+const useQuery = (
+  query: string,
+  variables?: Record<string, any>,
+): QueryResult => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   const [error, setError] = useState<any>(null);
@@ -22,13 +25,13 @@ const useQuery = (query: string, variables?: any): QueryResult => {
           setLoading(false);
           return;
         }
-        const response = await fetchGraphQL(query);
+        const response = await fetchGraphQL(query, variables);
         setData(response.data);
         setLoading(false);
       } catch (e) {
         console.error("Failed to perform fetchGraphQL", e);
-        setLoading(false);
         setError(e);
+        setLoading(false);
       }
     }
     fetch();

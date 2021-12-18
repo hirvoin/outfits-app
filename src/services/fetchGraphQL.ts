@@ -1,4 +1,4 @@
-async function fetchGraphQL(query: string, variables?: any) {
+async function fetchGraphQL(query: string, variables?: Record<string, any>) {
   const response = await fetch("http://10.0.2.2:8080/query", {
     method: "POST",
     headers: {

@@ -6,7 +6,7 @@ export interface Garment {
   title: string;
   isFavorited: boolean;
   color: string;
-  image: string;
+  imageUri: string;
   category?: GarmentCategory;
 }
 
@@ -17,7 +17,7 @@ const createGarment = (garment?: Partial<Garment>): Garment => ({
   isFavorited: false,
   color: "black",
   category: "top",
-  image:
+  imageUri:
     "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ff3%2F84%2Ff3847d428696de689f327a6f9a311f2ff9b59fcf.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_tshirtstanks_shortsleeve%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B2%5D&call=url[file:/product/main]",
   ...garment,
 });
@@ -28,7 +28,7 @@ const mockJacket = createGarment({
   title: "Green coat",
   color: "green",
   category: "outerwear",
-  image:
+  imageUri:
     "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fdd%2Ff7%2Fddf7e435eed0e0327d684d61a1f3e1e9d30c6920.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_bomberjackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
 });
 const mockJeans = createGarment({
@@ -36,7 +36,7 @@ const mockJeans = createGarment({
   title: "Blue jeans",
   color: "blue",
   category: "bottom",
-  image:
+  imageUri:
     "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F40%2Fcf%2F40cf42a76cf1f0ee44baa98d75acc836ef9d85d5.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jeans_slim%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
 });
 const mockShoes = createGarment({
@@ -44,7 +44,7 @@ const mockShoes = createGarment({
   title: "Black shoes",
   color: "black",
   category: "footwear",
-  image:
+  imageUri:
     "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Ff1%2F11%2Ff1118c72023454685325ab65d68f48e728a08aaf.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_shoes_sneakers%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
 });
 

@@ -15,12 +15,12 @@ const Wrapper = styled.View`
 storiesOf("Outfit List", module).add("Basic", () => <Basic />);
 
 const data: OutfitListItemProps[] = [
-  { id: 1, dateLabel: "Weekday 00.00.0000" },
-  { id: 2, dateLabel: "Weekday 00.00.0000" },
-  { id: 3, dateLabel: "Weekday 00.00.0000" },
-  { id: 4, dateLabel: "Weekday 00.00.0000" },
-  { id: 5, dateLabel: "Weekday 00.00.0000" },
-  { id: 6, dateLabel: "Weekday 00.00.0000" },
+  { id: 1, date: "Weekday 00.00.0000" },
+  { id: 2, date: "Weekday 00.00.0000" },
+  { id: 3, date: "Weekday 00.00.0000" },
+  { id: 4, date: "Weekday 00.00.0000" },
+  { id: 5, date: "Weekday 00.00.0000" },
+  { id: 6, date: "Weekday 00.00.0000" },
 ];
 
 const Basic = () => (
