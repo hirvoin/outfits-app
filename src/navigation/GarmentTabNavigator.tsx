@@ -8,7 +8,7 @@ type GarmentTabsParamList = {
   Outerwear: undefined;
   Tops: undefined;
   Bottoms: undefined;
-  Shoes: undefined;
+  Footwear: undefined;
 };
 
 const GarmentTab = createMaterialTopTabNavigator<GarmentTabsParamList>();
@@ -33,7 +33,7 @@ const GarmentTabNavigator = () => {
       <GarmentTab.Screen name="Outerwear" component={GarmentScreen} />
       <GarmentTab.Screen name="Tops" component={GarmentScreen} />
       <GarmentTab.Screen name="Bottoms" component={GarmentScreen} />
-      <GarmentTab.Screen name="Shoes" component={GarmentScreen} />
+      <GarmentTab.Screen name="Footwear" component={GarmentScreen} />
     </GarmentTab.Navigator>
   );
 };

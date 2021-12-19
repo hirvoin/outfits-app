@@ -40,9 +40,10 @@ const GarmentFormList = ({ title, data = [], onItemPress }: Props) => {
   return (
     <Container>
       <StyledText>{title}</StyledText>
-      {data?.length < 1 && (
-        <ActivityIndicator color={theme.colors.primary} size="large" />
-      )}
+      {!data ||
+        (data?.length < 1 && (
+          <ActivityIndicator color={theme.colors.primary} size="large" />
+        ))}
       <FlatList
         horizontal
         data={data}

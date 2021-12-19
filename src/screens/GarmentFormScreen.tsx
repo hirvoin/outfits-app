@@ -23,7 +23,7 @@ const categories: PickerItemProps[] = [
   { label: "Outerwear", value: "outerwear" },
   { label: "Tops", value: "tops" },
   { label: "Bottoms", value: "bottoms" },
-  { label: "Shoes", value: "shoes" },
+  { label: "Footwear", value: "footwear" },
 ];
 
 function GarmentFormScreen({ navigation, route }) {

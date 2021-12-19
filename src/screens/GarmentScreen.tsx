@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components/native";
 
 import useQuery from "../hooks/useQuery";
@@ -8,14 +8,8 @@ import {
   FloatingActionButton,
   GarmentList,
   GarmentListItemProps,
+  ScreenContainer,
 } from "../components";
-
-enum Category {
-  Tops = "tops",
-  Outerwear = "outerwear",
-  Footwear = "footwear",
-  Bottoms = "bottoms",
-}
 
 const GARMENTS_QUERY = `query Garments($category: String) {
   garments(category:$category) {
@@ -30,14 +24,14 @@ const GARMENTS_QUERY = `query Garments($category: String) {
 function GarmentScreen({ navigation, route }) {
   const [garments, setGarments] = useState<Garment[]>([]);
   const theme = useTheme();
-  const category =
-    route.name === "Shoes" ? "footwear" : route.name.toLowerCase();
+  const category = route.name.toLowerCase();
   const { loading, data } = useQuery(GARMENTS_QUERY, {
     category,
   });
 
   useEffect(() => {
     setGarments(data.garments);
+    return () => setGarments([]);
   }, [data]);
 
   const toggleFavorite = (item: GarmentListItemProps["id"]) => {
@@ -56,7 +50,7 @@ function GarmentScreen({ navigation, route }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       {loading && (
         <ActivityIndicator color={theme.colors.primary} size="large" />
       )}
@@ -67,17 +61,8 @@ function GarmentScreen({ navigation, route }) {
           navigation.navigate("GarmentForm", { category: route.name })
         }
       />
-    </View>
+    </ScreenContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default GarmentScreen;

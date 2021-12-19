@@ -1,9 +1,13 @@
 import React from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components/native";
 import useQuery from "../hooks/useQuery";
 
-import { FloatingActionButton, OutfitList } from "../components";
+import {
+  FloatingActionButton,
+  OutfitList,
+  ScreenContainer,
+} from "../components";
 
 const OUTFITS = `query OutfitsQuery {
   outfits {
@@ -16,12 +20,12 @@ const OUTFITS = `query OutfitsQuery {
   }
 }`;
 
-function OutfitScreen({ navigation, route }) {
+function OutfitScreen({ navigation }) {
   const { loading, data } = useQuery(OUTFITS);
   const theme = useTheme();
 
   return (
-    <View style={styles.container}>
+    <ScreenContainer>
       {loading && (
         <ActivityIndicator color={theme.colors.primary} size="large" />
       )}
@@ -30,17 +34,8 @@ function OutfitScreen({ navigation, route }) {
         iconName="plus"
         onPress={() => navigation.navigate("OutfitForm")}
       />
-    </View>
+    </ScreenContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 
 export default OutfitScreen;
