@@ -3,17 +3,17 @@ import fetchGraphQL from "../services/fetchGraphQL";
 
 interface QueryResult {
   loading: boolean;
-  data: any[];
-  error: any;
+  data: unknown[];
+  error: unknown;
 }
 
 const useQuery = (
   query: string,
-  variables?: Record<string, any>,
+  variables?: Record<string, unknown>,
 ): QueryResult => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<unknown>(null);
 
   useEffect(() => {
     let isMounted = true;
