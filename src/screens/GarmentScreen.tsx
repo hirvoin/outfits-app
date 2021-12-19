@@ -61,6 +61,7 @@ function GarmentScreen({ navigation, route }: Props) {
       <GarmentList data={garments} onFavorite={toggleFavorite} />
       <FloatingActionButton
         iconName="plus"
+        label={`Add ${route.name.toLowerCase()}`}
         onPress={() =>
           navigation.navigate("GarmentForm", { category: route.name })
         }

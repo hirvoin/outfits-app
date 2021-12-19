@@ -7,7 +7,7 @@ export interface Outfit {
   garments: Garment[];
 }
 
-const createOutfit = (outfit?: Partial<Outfit>): Outfit => ({
+export const createOutfit = (outfit?: Partial<Outfit>): Outfit => ({
   id: 1,
   userId: 1,
   date: new Date().toISOString(),

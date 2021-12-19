@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useTheme } from "styled-components/native";
-import Icon from "@expo/vector-icons/Ionicons";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 import GarmentStackNavigator from "./GarmentStackNavigator";
 import OutfitStackNavigator from "./OutfitStackNavigator";
@@ -25,10 +25,13 @@ const RootTabNavigator = () => {
       <Tab.Navigator
         screenOptions={{
           headerShown: false,
-          tabBarStyle: { position: "absolute" },
           tabBarActiveBackgroundColor: theme.colors.black,
           tabBarInactiveBackgroundColor: theme.colors.black,
-          tabBarLabelStyle: { color: theme.colors.white },
+          tabBarLabelStyle: {
+            color: theme.colors.white,
+            fontFamily: "Montserrat_500Medium",
+            fontSize: 12,
+          },
         }}
       >
         <Tab.Screen
@@ -37,8 +40,8 @@ const RootTabNavigator = () => {
           options={{
             tabBarIcon: ({ focused }) => (
               <Icon
-                name={focused ? "md-shirt" : "md-shirt-outline"}
-                size={25}
+                name={focused ? "tshirt-crew" : "tshirt-crew-outline"}
+                size={30}
                 color={theme.colors.white}
               />
             ),
@@ -48,10 +51,11 @@ const RootTabNavigator = () => {
           name="Garment"
           component={GarmentStackNavigator}
           options={{
+            tabBarLabel: "Wardrobe",
             tabBarIcon: ({ focused }) => (
               <Icon
-                name={focused ? "md-shirt" : "md-shirt-outline"}
-                size={25}
+                name={focused ? "wardrobe" : "wardrobe-outline"}
+                size={30}
                 color={theme.colors.white}
               />
             ),

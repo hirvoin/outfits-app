@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/native";
 import {
   Picker,
   PickerItemProps as RNPPickerItemProps,
 } from "@react-native-picker/picker";
+import Typography from "../Typography/Typography";
 
 const PickerContainer = styled.View`
   width: 100%;
@@ -17,8 +18,12 @@ const Container = styled.View`
   margin: 8px;
 `;
 
-const Label = styled.Text`
+const Label = styled(Typography)`
   padding-left: 16px;
+`;
+
+const StyledPicker = styled(Picker)`
+  font-family: "Montserrat_400Regular";
 `;
 
 export type PickerItemProps = RNPPickerItemProps;
@@ -31,17 +36,18 @@ export interface Props {
 }
 
 const PickerInput = ({ label, items, value, setValue }: Props) => {
-  const renderItems = () => {
-    return items.map((i) => <Picker.Item key={i.value} {...i} />);
-  };
+  const renderItems = () =>
+    items.map((i) => (
+      <Picker.Item fontFamily="Montserrat_400Regular" key={i.value} {...i} />
+    ));
 
   return (
     <Container>
-      <Label>{label}</Label>
+      <Label fontWeight="regular">{label}</Label>
       <PickerContainer>
-        <Picker selectedValue={value} onValueChange={setValue}>
+        <StyledPicker selectedValue={value} onValueChange={setValue}>
           {renderItems()}
-        </Picker>
+        </StyledPicker>
       </PickerContainer>
     </Container>
   );

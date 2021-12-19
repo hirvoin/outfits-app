@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components/native";
 
 import OutfitListItem from "./OutfitListItem";
+import { createOutfit } from "../../services/outfits";
 
 const Wrapper = styled.View`
   justify-content: center;
@@ -13,8 +14,10 @@ const Wrapper = styled.View`
 
 storiesOf("Outfit List Item", module).add("Basic", () => <Basic />);
 
+const outfit = createOutfit();
+
 const Basic = () => (
   <Wrapper>
-    <OutfitListItem id={1} date="Weekday 00.00.0000" />
+    <OutfitListItem date={outfit.date} garments={outfit.garments} />
   </Wrapper>
 );

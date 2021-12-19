@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+
 import { GarmentListItemProps } from "..";
+import Typography from "../Typography/Typography";
 
 const Container = styled.TouchableOpacity`
   background: rgb(184, 184, 184);
@@ -29,30 +32,34 @@ const GarmentImage = styled.Image`
 
 const InfoContainer = styled.View`
   height: 50px;
-  width: 100%;
   background: #0000005c;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   padding: 16px;
-  justify-content: center;
+  /* justify-content: center; */
+  flex-direction: row;
+  align-items: center;
 `;
 
-const StyledText = styled.Text`
+const StyledText = styled(Typography)`
   font-size: ${(props) => props.theme.fontSizes.medium};
   color: ${(props) => props.theme.colors.white};
+`;
+
+const DateIcon = styled(Icon)`
+  font-size: ${(props) => props.theme.fontSizes.large};
+  color: ${(props) => props.theme.colors.white};
+  padding-right: 8px;
 `;
 
 type OutfitListGarment = Pick<GarmentListItemProps, "imageUri" | "id">;
 
 export interface Props {
-  id: number;
   date: string;
   garments: OutfitListGarment[];
 }
 
-const GarmentListItem = ({ id, date, garments }: Props) => {
-  const imageUri = "../../../assets/coat.jpg";
-
+const GarmentListItem = ({ date, garments }: Props) => {
   const renderGarmentImage = (g: OutfitListGarment) => {
     return (
       <ImageContainer key={g.id}>
@@ -65,6 +72,7 @@ const GarmentListItem = ({ id, date, garments }: Props) => {
     <Container>
       <GarmentGrid>{garments.map(renderGarmentImage)}</GarmentGrid>
       <InfoContainer>
+        <DateIcon name="calendar-clock" />
         <StyledText>{date}</StyledText>
       </InfoContainer>
     </Container>

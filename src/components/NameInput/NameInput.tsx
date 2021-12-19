@@ -5,20 +5,22 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Container = styled.View`
   width: 100%;
-  display: flex;
   flex-direction: row;
-  margin: 8px;
+  margin: 16px 8px;
   align-items: center;
 `;
 
 const Input = styled.TextInput`
-  font-size: 36px;
+  color: ${(props) => props.theme.colors.black};
+  font-size: ${(props) => props.theme.fontSizes.large};
+  font-family: "Montserrat_400Regular";
+  flex-grow: 1;
 `;
 
 const Icon = styled(MaterialCommunityIcons)`
-  font-size: 32px;
-  color: black;
-  margin-right: 8px;
+  color: ${(props) => props.theme.colors.black};
+  font-size: ${(props) => props.theme.fontSizes.large};
+  margin: 0 8px;
 `;
 
 export type Props = TextInputProps;

@@ -27,6 +27,8 @@ const GarmentTabNavigator = () => {
         },
         tabBarLabelStyle: {
           color: theme.colors.white,
+          fontFamily: "Montserrat_500Medium",
+          fontSize: 10,
         },
       }}
     >

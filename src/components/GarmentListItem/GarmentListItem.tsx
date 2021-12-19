@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components/native";
-import { ImageSourcePropType } from "react-native";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 import { Garment } from "../../services/garments";
+import Typography from "../Typography/Typography";
 
 const Container = styled.TouchableOpacity`
   height: 150px;
@@ -30,20 +30,24 @@ const InfoContainer = styled.View`
   flex-direction: row;
 `;
 
-const StyledText = styled.Text`
-  color: white;
-  align-self: flex-end;
-  font-size: 18px;
+const TitleContainer = styled.View`
+  width: 75%;
+  align-items: baseline;
 `;
 
-const FavoriteIcon = styled(Icon)`
-  font-size: 40px;
+const Title = styled(Typography)`
+  color: white;
+  margin-top: auto;
+  font-size: ${(props) => props.theme.fontSizes.small};
+`;
+
+const StyledIcon = styled(Icon)`
+  font-size: ${(props) => props.theme.fontSizes.xlarge};
   color: ${(props) => props.theme.colors.background};
 `;
 
 const IconContainer = styled.TouchableOpacity`
   margin-left: auto;
-  padding: 8px;
   align-self: center;
 `;
 
@@ -71,15 +75,17 @@ const GarmentListItem = ({
     <Container onPress={handlePress}>
       <GarmentImage source={{ uri: imageUri }} />
       <InfoContainer>
-        <StyledText>{title}</StyledText>
+        <TitleContainer>
+          <Title fontWeight="medium">{title}</Title>
+        </TitleContainer>
         {onFavorite && (
           <IconContainer onPress={handleFavorite}>
-            <FavoriteIcon name={iconName} />
+            <StyledIcon name={iconName} />
           </IconContainer>
         )}
         {onPress && (
           <IconContainer onPress={handlePress}>
-            {isSelected && <FavoriteIcon name="check-circle-outline" />}
+            {isSelected && <StyledIcon name="check-circle-outline" />}
           </IconContainer>
         )}
       </InfoContainer>

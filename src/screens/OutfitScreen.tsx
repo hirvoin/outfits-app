@@ -37,6 +37,7 @@ function OutfitScreen({ navigation }: Props) {
       {!loading && <OutfitList data={data.outfits} />}
       <FloatingActionButton
         iconName="plus"
+        label="Add outfit"
         onPress={() => navigation.navigate("OutfitForm")}
       />
     </ScreenContainer>

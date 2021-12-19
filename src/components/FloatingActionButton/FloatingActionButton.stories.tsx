@@ -11,7 +11,9 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
-storiesOf("Floating Action Button", module).add("Basic", () => <Basic />);
+storiesOf("Floating Action Button", module)
+  .add("Basic", () => <Basic />)
+  .add("Label", () => <Label />);
 
 const Basic = () => {
   return (
@@ -19,6 +21,18 @@ const Basic = () => {
       <FloatingActionButton
         onPress={() => console.log("onPress")}
         iconName="plus"
+      />
+    </Wrapper>
+  );
+};
+
+const Label = () => {
+  return (
+    <Wrapper>
+      <FloatingActionButton
+        onPress={() => console.log("onPress")}
+        iconName="plus"
+        label="Label"
       />
     </Wrapper>
   );

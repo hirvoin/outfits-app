@@ -39,6 +39,7 @@ const GarmentStackNavigator = ({
         },
         headerTitleStyle: {
           color: theme.colors.white,
+          fontFamily: "Montserrat_600SemiBold",
         },
         headerTintColor: theme.colors.white,
       }}
@@ -47,10 +48,17 @@ const GarmentStackNavigator = ({
         name="GarmentTab"
         component={GarmentTabNavigator}
         options={{
+          headerTitle: "Wardrobe",
           headerShadowVisible: false,
         }}
       />
-      <GarmentStack.Screen name="GarmentForm" component={GarmentFormScreen} />
+      <GarmentStack.Screen
+        name="GarmentForm"
+        component={GarmentFormScreen}
+        options={{
+          headerTitle: "Add new garment",
+        }}
+      />
     </GarmentStack.Navigator>
   );
 };

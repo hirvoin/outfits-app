@@ -37,12 +37,25 @@ const OutfitStackNavigator = ({
         },
         headerTitleStyle: {
           color: theme.colors.white,
+          fontFamily: "Montserrat_600SemiBold",
         },
         headerTintColor: theme.colors.white,
       }}
     >
-      <OutfitStack.Screen name="OutfitTab" component={OutfitScreen} />
-      <OutfitStack.Screen name="OutfitForm" component={OutfitFormScreen} />
+      <OutfitStack.Screen
+        name="OutfitTab"
+        component={OutfitScreen}
+        options={{
+          headerTitle: "Outfits",
+        }}
+      />
+      <OutfitStack.Screen
+        name="OutfitForm"
+        component={OutfitFormScreen}
+        options={{
+          headerTitle: "Add new outfit",
+        }}
+      />
     </OutfitStack.Navigator>
   );
 };

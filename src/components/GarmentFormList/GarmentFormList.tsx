@@ -5,6 +5,7 @@ import { ActivityIndicator, FlatList, FlatListProps } from "react-native";
 import GarmentListItem, {
   Props as GarmentListItemProps,
 } from "../GarmentListItem/GarmentListItem";
+import Typography from "../Typography/Typography";
 
 const Container = styled.View`
   width: 100%;
@@ -16,9 +17,10 @@ const ItemContainer = styled.View`
   margin-right: 8px;
 `;
 
-const StyledText = styled.Text`
-  color: black;
-  font-size: 22px;
+const Title = styled(Typography)`
+  color: ${(props) => props.theme.colors.black};
+  font-size: ${(props) => props.theme.fontSizes.large};
+  padding: 4px;
 `;
 
 interface Props {
@@ -39,7 +41,7 @@ const GarmentFormList = ({ title, data = [], onItemPress }: Props) => {
 
   return (
     <Container>
-      <StyledText>{title}</StyledText>
+      <Title fontWeight="medium">{title}</Title>
       {!data ||
         (data?.length < 1 && (
           <ActivityIndicator color={theme.colors.primary} size="large" />
