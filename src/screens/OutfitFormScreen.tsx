@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import {
   GarmentFormList,
@@ -8,8 +9,11 @@ import {
 } from "../components";
 import { Garment } from "../services/garments";
 import useQuery from "../hooks/useQuery";
+import { OutfitStackScreenParams } from "../navigation";
 
 type OutfitGarment = Garment & { isSelected?: boolean };
+
+type Props = NativeStackScreenProps<OutfitStackScreenParams, "OutfitTab">;
 
 const GARMENTS_QUERY = `query Garments($category: String) {
   garments(category:$category) {
@@ -21,7 +25,7 @@ const GARMENTS_QUERY = `query Garments($category: String) {
 }
 `;
 
-function OutfitFormScreen({ navigation, route }) {
+function OutfitFormScreen({ navigation }: Props) {
   const [garments, setGarments] = useState<OutfitGarment[]>([]);
   const { data } = useQuery(GARMENTS_QUERY);
 

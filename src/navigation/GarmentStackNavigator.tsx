@@ -9,9 +9,9 @@ import { useTheme } from "styled-components/native";
 import GarmentTabNavigator from "./GarmentTabNavigator";
 import { GarmentFormScreen } from "../screens";
 
-type GarmentStackParamList = {
+export type GarmentStackParamList = {
   GarmentTab: undefined;
-  GarmentForm: undefined;
+  GarmentForm: { category: string };
 };
 
 const GarmentStack = createNativeStackNavigator<GarmentStackParamList>();

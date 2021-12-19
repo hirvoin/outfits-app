@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ScrollView, StyleSheet, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import {
   ImageInput,
@@ -8,6 +9,9 @@ import {
   PickerItemProps,
   SubmitButton,
 } from "../components";
+import { GarmentStackParamList } from "../navigation";
+
+type Props = NativeStackScreenProps<GarmentStackParamList, "GarmentForm">;
 
 const colorItems: PickerItemProps[] = [
   { label: "Black", value: 1 },
@@ -26,7 +30,7 @@ const categories: PickerItemProps[] = [
   { label: "Footwear", value: "footwear" },
 ];
 
-function GarmentFormScreen({ navigation, route }) {
+function GarmentFormScreen({ navigation, route }: Props) {
   const [category, setCategory] = useState<PickerItemProps["value"]>();
   const [color, setColor] = useState<PickerItemProps["value"]>();
 

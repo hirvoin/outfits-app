@@ -8,7 +8,7 @@ import { useTheme } from "styled-components/native";
 
 import { OutfitFormScreen, OutfitScreen } from "../screens";
 
-type OutfitStackScreenParams = {
+export type OutfitStackScreenParams = {
   OutfitTab: undefined;
   OutfitForm: undefined;
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { useTheme } from "styled-components/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import useQuery from "../hooks/useQuery";
 import { Garment } from "../services/garments";
@@ -10,6 +11,9 @@ import {
   GarmentListItemProps,
   ScreenContainer,
 } from "../components";
+import { GarmentStackParamList } from "../navigation";
+
+type Props = NativeStackScreenProps<GarmentStackParamList, "GarmentTab">;
 
 const GARMENTS_QUERY = `query Garments($category: String) {
   garments(category:$category) {
@@ -21,7 +25,7 @@ const GARMENTS_QUERY = `query Garments($category: String) {
 }
 `;
 
-function GarmentScreen({ navigation, route }) {
+function GarmentScreen({ navigation, route }: Props) {
   const [garments, setGarments] = useState<Garment[]>([]);
   const theme = useTheme();
   const category = route.name.toLowerCase();
