@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator } from "react-native";
-import { useTheme } from "styled-components/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import useQuery from "../hooks/useQuery";
@@ -12,6 +10,7 @@ import {
   ScreenContainer,
 } from "../components";
 import { GarmentStackParamList } from "../navigation";
+import fetchGraphQL from "../services/fetchGraphQL";
 
 type Props = NativeStackScreenProps<GarmentStackParamList, "GarmentTab">;
 
@@ -27,11 +26,20 @@ const GARMENTS_QUERY = `query Garments($category: String) {
 
 function GarmentScreen({ navigation, route }: Props) {
   const [garments, setGarments] = useState<Garment[]>([]);
-  const theme = useTheme();
+  const [loading, setLoading] = useState(false);
   const category = route.name.toLowerCase();
-  const { loading, data } = useQuery(GARMENTS_QUERY, {
+  const { loading: isFetching, data } = useQuery(GARMENTS_QUERY, {
     category,
   });
+
+  const handleRefresh = async () => {
+    setLoading(true);
+    const response = await fetchGraphQL(GARMENTS_QUERY, {
+      category,
+    });
+    setGarments(response?.data.garments);
+    setLoading(false);
+  };
 
   useEffect(() => {
     setGarments(data.garments);
@@ -55,10 +63,12 @@ function GarmentScreen({ navigation, route }: Props) {
 
   return (
     <ScreenContainer>
-      {loading && (
-        <ActivityIndicator color={theme.colors.primary} size="large" />
-      )}
-      <GarmentList data={garments} onFavorite={toggleFavorite} />
+      <GarmentList
+        data={garments}
+        onFavorite={toggleFavorite}
+        refreshing={loading || isFetching}
+        onRefresh={handleRefresh}
+      />
       <FloatingActionButton
         iconName="plus"
         label={`Add ${route.name.toLowerCase()}`}

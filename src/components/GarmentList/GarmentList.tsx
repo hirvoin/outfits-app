@@ -24,15 +24,18 @@ const ItemContainer = styled.View<ItemContainerProps>`
   margin-bottom: 8px;
 `;
 
-interface Props {
-  data: FlatListProps<GarmentListItemProps>["data"];
+interface Props
+  extends Pick<
+    FlatListProps<GarmentListItemProps>,
+    "data" | "refreshing" | "onRefresh"
+  > {
   onFavorite: (id: GarmentListItemProps["id"]) => void;
 }
 
 const screen = Dimensions.get("screen");
 const width = screen.width / 2 - 16;
 
-const GarmentList = ({ data, onFavorite }: Props) => {
+const GarmentList = ({ data, onFavorite, refreshing, onRefresh }: Props) => {
   const renderItem = ({
     item,
     index,
@@ -57,6 +60,8 @@ const GarmentList = ({ data, onFavorite }: Props) => {
         numColumns={2}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
+        refreshing={refreshing}
+        onRefresh={onRefresh}
       />
     </Container>
   );

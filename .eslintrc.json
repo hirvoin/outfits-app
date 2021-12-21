@@ -28,8 +28,7 @@
       "error",
       {
         "trailingComma": "all",
-        "endOfLine": "auto",
-        "jsxSingleQuote": false
+        "endOfLine": "auto"
       }
     ],
     "sort-imports": ["error", {

@@ -17,6 +17,7 @@ import {
   useFonts,
 } from "@expo-google-fonts/montserrat";
 import AppLoading from "expo-app-loading";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 import { RootTabNavigator } from "./src/navigation";
 import StorybookUI from "./storybook";
@@ -42,7 +43,9 @@ function App() {
 
   return (
     <ThemeProvider theme={light}>
-      <RootTabNavigator />
+      <RootSiblingParent>
+        <RootTabNavigator />
+      </RootSiblingParent>
     </ThemeProvider>
   );
 }

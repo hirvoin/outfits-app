@@ -41,7 +41,7 @@ const RootTabNavigator = () => {
             tabBarIcon: ({ focused }) => (
               <Icon
                 name={focused ? "tshirt-crew" : "tshirt-crew-outline"}
-                size={30}
+                size={25}
                 color={theme.colors.white}
               />
             ),
@@ -55,7 +55,7 @@ const RootTabNavigator = () => {
             tabBarIcon: ({ focused }) => (
               <Icon
                 name={focused ? "wardrobe" : "wardrobe-outline"}
-                size={30}
+                size={25}
                 color={theme.colors.white}
               />
             ),
