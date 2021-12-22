@@ -30,12 +30,19 @@ interface Props
     "data" | "refreshing" | "onRefresh"
   > {
   onFavorite: (id: GarmentListItemProps["id"]) => void;
+  onPress: (id: GarmentListItemProps["id"]) => void;
 }
 
 const screen = Dimensions.get("screen");
 const width = screen.width / 2 - 16;
 
-const GarmentList = ({ data, onFavorite, refreshing, onRefresh }: Props) => {
+const GarmentList = ({
+  data,
+  refreshing,
+  onPress,
+  onFavorite,
+  onRefresh,
+}: Props) => {
   const renderItem = ({
     item,
     index,
@@ -46,7 +53,7 @@ const GarmentList = ({ data, onFavorite, refreshing, onRefresh }: Props) => {
     const isOdd = index % 2 === 0;
     return (
       <ItemContainer isOdd={isOdd} width={width}>
-        <GarmentListItem {...item} onFavorite={onFavorite} />
+        <GarmentListItem {...item} onFavorite={onFavorite} onPress={onPress} />
       </ItemContainer>
     );
   };

@@ -11,7 +11,7 @@ import { GarmentFormScreen } from "../screens";
 
 export type GarmentStackParamList = {
   GarmentTab: undefined;
-  GarmentForm: { category: string };
+  GarmentForm: { category: string; garmentId?: number };
 };
 
 const GarmentStack = createNativeStackNavigator<GarmentStackParamList>();

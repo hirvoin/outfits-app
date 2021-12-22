@@ -61,9 +61,14 @@ function GarmentScreen({ navigation, route }: Props) {
     setGarments(copy);
   };
 
+  const openGarment = (id: Garment["id"]) => {
+    navigation.navigate("GarmentForm", { category, garmentId: id });
+  };
+
   return (
     <ScreenContainer>
       <GarmentList
+        onPress={openGarment}
         data={garments}
         onFavorite={toggleFavorite}
         refreshing={loading || isFetching}

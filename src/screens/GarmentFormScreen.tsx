@@ -13,6 +13,7 @@ import {
 } from "../components";
 import { GarmentStackParamList } from "../navigation";
 import fetchGraphQL from "../services/fetchGraphQL";
+import { Garment } from "../services/garments";
 
 type Props = NativeStackScreenProps<GarmentStackParamList, "GarmentForm">;
 
@@ -45,17 +46,55 @@ const CREATE_GARMENT = `mutation CreateGarment($input: NewGarment!) {
   }
 }`;
 
+const GARMENT_QUERY = `query Garments($id: String) {
+  garments(id:$id) {
+    id,
+    title,
+    category,
+    imageUri,
+    color
+  }
+}`;
+
 function GarmentFormScreen({ navigation, route }: Props) {
+  const [title, setTitle] = useState<string>();
   const [category, setCategory] = useState<PickerItemProps["value"]>();
   const [color, setColor] = useState<PickerItemProps["value"]>("black");
-  const [title, setTitle] = useState<string>();
-  const [imageUri, setImage] = useState();
+  const [imageUri, setImage] = useState("");
 
   const theme = useTheme();
 
   useEffect(() => {
     setCategory(route.params.category.toLowerCase());
-  }, [route.params.category]);
+    if (route.params.garmentId) {
+      const fetch = async () => {
+        const queryVariables = {
+          id: route.params.garmentId,
+        };
+        try {
+          const result = await fetchGraphQL(GARMENT_QUERY, queryVariables);
+
+          if (result.data?.garments.length !== 1) {
+            Toast.show("Something went wrong.", {
+              backgroundColor: theme.colors.salmon,
+            });
+            return;
+          }
+
+          const garment = result.data.garments[0] as Garment;
+          setTitle(garment.title);
+          setCategory(garment.category);
+          setColor(garment.color);
+          setImage(garment.imageUri);
+        } catch (e) {
+          Toast.show("Network error.", {
+            backgroundColor: theme.colors.salmon,
+          });
+        }
+      };
+      fetch();
+    }
+  }, [route.params.category, route.params.garmentId, theme.colors.salmon]);
 
   const handleSubmit = async () => {
     const queryVariables = {
@@ -75,7 +114,10 @@ function GarmentFormScreen({ navigation, route }: Props) {
         backgroundColor: theme.colors.salmon,
       });
     } else {
-      Toast.show("Garment succesfully added!", {
+      const message = route.params.garmentId
+        ? `${title} was succesfully added to your wardrobe.`
+        : `Changes saved succesfully.`;
+      Toast.show(message, {
         backgroundColor: theme.colors.primary,
       });
     }
@@ -107,7 +149,7 @@ function GarmentFormScreen({ navigation, route }: Props) {
           setValue={setColor}
         />
       </ScrollView>
-      <SubmitButton label="Add garment" onPress={handleSubmit} />
+      <SubmitButton label="Save garment" onPress={handleSubmit} />
     </View>
   );
 }
@@ -115,9 +157,7 @@ function GarmentFormScreen({ navigation, route }: Props) {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#fff" },
   scrollContainer: {
-    paddingVertical: 8,
-    paddingHorizontal: 8,
-
+    padding: 8,
     alignItems: "center",
     justifyContent: "flex-start",
   },
