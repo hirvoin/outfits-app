@@ -1,3 +1,3 @@
-# Clothing App
+# Wardrobe application
 
-## Mobile application for tracing clothing usage!
+## Mobile application to track garment usage
