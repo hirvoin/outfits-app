@@ -160,7 +160,7 @@ function GarmentFormScreen({ navigation, route }: Props) {
           onChangeText={handleTextInput}
           placeholder="Garment name..."
         />
-        <ImageInput />
+        <ImageInput imageUri={imageUri} />
         <PickerInput
           label="Category"
           items={categories}

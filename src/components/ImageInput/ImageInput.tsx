@@ -16,14 +16,19 @@ const StyledImage = styled.Image`
   flex: 1;
 `;
 
-export interface Props {}
+export interface Props {
+  imageUri: string;
+}
 
-const ImageInput = ({}: Props) => {
-  const exampleImage = require("../../../assets/coat.jpg");
+const ImageInput = ({ imageUri }: Props) => {
+  const source = imageUri
+    ? { uri: imageUri }
+    : // eslint-disable-next-line global-require
+      require("../../../assets/icon.png");
 
   return (
     <Container>
-      <StyledImage source={exampleImage} />
+      <StyledImage source={source} />
       <FloatingActionButton iconName="pencil" />
     </Container>
   );
