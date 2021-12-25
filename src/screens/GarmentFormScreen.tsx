@@ -46,6 +46,18 @@ const CREATE_GARMENT = `mutation CreateGarment($input: NewGarment!) {
   }
 }`;
 
+const UPDATE_GARMENT = `mutation UpdateGarment($input: UpdatedGarment!) {
+  updateGarment(input: $input){
+    title,
+    category,
+    color,
+		wearCount,
+    isFavorite
+    id,
+    imageUri
+  }
+}`;
+
 const GARMENT_QUERY = `query Garments($id: String) {
   garments(id:$id) {
     id,
@@ -97,7 +109,17 @@ function GarmentFormScreen({ navigation, route }: Props) {
   }, [route.params.category, route.params.garmentId, theme.colors.salmon]);
 
   const handleSubmit = async () => {
-    const queryVariables = {
+    const updateVariables = {
+      input: {
+        id: route.params.garmentId,
+        title,
+        category,
+        imageUri,
+        color,
+      },
+    };
+
+    const createVariables = {
       input: {
         userId: 1,
         title,
@@ -106,8 +128,10 @@ function GarmentFormScreen({ navigation, route }: Props) {
         color,
       },
     };
-
-    const response = await fetchGraphQL(CREATE_GARMENT, queryVariables);
+    const query = route.params.garmentId
+      ? fetchGraphQL(UPDATE_GARMENT, updateVariables)
+      : fetchGraphQL(CREATE_GARMENT, createVariables);
+    const response = await query;
 
     if (response.errors) {
       Toast.show("Something went wrong.", {
@@ -115,8 +139,9 @@ function GarmentFormScreen({ navigation, route }: Props) {
       });
     } else {
       const message = route.params.garmentId
-        ? `${title} was succesfully added to your wardrobe.`
-        : `Changes saved succesfully.`;
+        ? `Changes saved succesfully.`
+        : `${title} was succesfully added to your wardrobe.`;
+
       Toast.show(message, {
         backgroundColor: theme.colors.primary,
       });
