@@ -66,7 +66,7 @@ export interface Props {
   handleSubmit: () => void;
 }
 
-const LoginScreen = ({
+const Login = ({
   username,
   password,
   handlePassword,
@@ -101,4 +101,4 @@ const LoginScreen = ({
   );
 };
 
-export default LoginScreen;
+export default Login;

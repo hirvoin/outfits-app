@@ -19,9 +19,10 @@ import {
 import AppLoading from "expo-app-loading";
 import { RootSiblingParent } from "react-native-root-siblings";
 
-import { RootTabNavigator } from "./src/navigation";
+import { RootStackNavigator } from "./src/navigation";
 import StorybookUI from "./storybook";
 import light from "./src/themes/light";
+import { AuthProvider } from "./src/context/auth";
 
 function App() {
   const [fontsLoaded] = useFonts({
@@ -43,9 +44,11 @@ function App() {
 
   return (
     <ThemeProvider theme={light}>
-      <RootSiblingParent>
-        <RootTabNavigator />
-      </RootSiblingParent>
+      <AuthProvider>
+        <RootSiblingParent>
+          <RootStackNavigator />
+        </RootSiblingParent>
+      </AuthProvider>
     </ThemeProvider>
   );
 }
