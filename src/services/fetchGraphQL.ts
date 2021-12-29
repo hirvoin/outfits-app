@@ -2,7 +2,7 @@ async function fetchGraphQL(
   query: string,
   variables?: Record<string, unknown>,
 ) {
-  const response = await fetch("http://192.168.0.12:8080/query", {
+  const response = await fetch("http://192.168.11.7:8080/query", {
     method: "POST",
     headers: {
       Authorization: "Bearer xxx",

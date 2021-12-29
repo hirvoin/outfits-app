@@ -11,7 +11,7 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
-storiesOf("PickerInput", module).add("Basic", () => <Basic />);
+storiesOf("Picker Input", module).add("Basic", () => <Basic />);
 
 const Basic = () => {
   const [value, setValue] = useState<PickerItemProps["value"]>();

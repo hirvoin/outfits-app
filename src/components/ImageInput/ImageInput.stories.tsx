@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react-native";
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/native";
 
 import ImageInput from "./ImageInput";
@@ -11,7 +11,7 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
-storiesOf("ImageINput", module).add("Basic", () => <Basic />);
+storiesOf("Image Input", module).add("Basic", () => <Basic />);
 
 const Basic = () => {
   return (

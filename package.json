@@ -74,6 +74,5 @@
       "outputFile": "./storybook/storyLoader.js"
     }
   },
-
   "private": true
 }
