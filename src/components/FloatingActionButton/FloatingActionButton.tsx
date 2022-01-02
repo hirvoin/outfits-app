@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components/native";
 import { TouchableOpacityProps } from "react-native";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
-import { LinearGradient } from "expo-linear-gradient";
 
 import Typography from "../Typography/Typography";
 

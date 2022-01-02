@@ -15,7 +15,7 @@ export type RootStackParamList = {
 const RootStack = createNativeStackNavigator<RootStackParamList>();
 
 const RootStackNavigator = () => {
-  const { user } = useAuth();
+  const { token } = useAuth();
 
   return (
     <NavigationContainer>
@@ -26,7 +26,7 @@ const RootStackNavigator = () => {
           headerShown: false,
         }}
       >
-        {user === "" ? (
+        {token === "" ? (
           <RootStack.Screen name="Login" component={LoginScreen} />
         ) : (
           <RootStack.Screen name="Home" component={HomeTabNavigator} />

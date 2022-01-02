@@ -1,17 +1,6 @@
-import { useLinkProps } from "@react-navigation/native";
 import React from "react";
 import { TextProps } from "react-native";
 import styled from "styled-components/native";
-
-type FontWeightProps = {
-  thin?: boolean;
-  extraLight?: boolean;
-  light?: boolean;
-  regular?: boolean;
-  medium?: boolean;
-  semiBold?: boolean;
-  bold?: boolean;
-};
 
 type FontWeight =
   | "thin"

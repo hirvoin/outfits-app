@@ -57,7 +57,7 @@ export const mockGarments = [mockJacket, mockShirt, mockJeans, mockShoes];
 export function mockApiCall<T>(
   success: boolean,
   data: T,
-  timeout: number,
+  timeout: number
 ): Promise<T> {
   return new Promise<T>((resolve, reject) => {
     setTimeout(() => {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable camelcase */
 import React from "react";
 import { ThemeProvider } from "styled-components/native";

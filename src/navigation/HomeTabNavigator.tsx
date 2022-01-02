@@ -47,7 +47,6 @@ const HomeTabNavigator = () => {
         name="Garment"
         component={GarmentStackNavigator}
         options={{
-          tabBarLabel: "Wardrobe",
           tabBarIcon: ({ focused }) => (
             <Icon
               name={focused ? "wardrobe" : "wardrobe-outline"}

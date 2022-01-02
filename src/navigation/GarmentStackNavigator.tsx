@@ -1,4 +1,6 @@
 import React from "react";
+import { TouchableOpacity } from "react-native";
+import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import {
   NativeStackScreenProps,
@@ -8,6 +10,7 @@ import { useTheme } from "styled-components/native";
 
 import GarmentTabNavigator from "./GarmentTabNavigator";
 import { GarmentFormScreen } from "../screens";
+import { useAuth } from "../context/auth";
 
 export type GarmentStackParamList = {
   GarmentTab: undefined;
@@ -21,6 +24,7 @@ const GarmentStackNavigator = ({
   route,
 }: NativeStackScreenProps<GarmentStackParamList>) => {
   const theme = useTheme();
+  const { logout } = useAuth();
 
   React.useLayoutEffect(() => {
     const routeName = getFocusedRouteNameFromRoute(route);
@@ -42,6 +46,11 @@ const GarmentStackNavigator = ({
           fontFamily: "Montserrat_600SemiBold",
         },
         headerTintColor: theme.colors.white,
+        headerRight: () => (
+          <TouchableOpacity onPress={logout}>
+            <Icon name="logout" size={25} color={theme.colors.white} />
+          </TouchableOpacity>
+        ),
       }}
     >
       <GarmentStack.Screen

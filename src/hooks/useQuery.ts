@@ -9,7 +9,7 @@ interface QueryResult {
 
 const useQuery = (
   query: string,
-  variables?: Record<string, unknown>,
+  variables?: Record<string, unknown>
 ): QueryResult => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -22,13 +22,13 @@ const useQuery = (
       setLoading(true);
       try {
         if (!isMounted) {
-          setLoading(false);
           return;
         }
         const response = await fetchGraphQL(query, variables);
         setData(response.data);
         setLoading(false);
       } catch (e) {
+        // eslint-disable-next-line no-console
         console.error("Failed to perform fetchGraphQL", e);
         setError(e);
         setLoading(false);

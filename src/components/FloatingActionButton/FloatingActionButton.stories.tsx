@@ -1,5 +1,5 @@
 import { storiesOf } from "@storybook/react-native";
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components/native";
 
 import FloatingActionButton from "./FloatingActionButton";
@@ -18,10 +18,7 @@ storiesOf("Floating Action Button", module)
 const Basic = () => {
   return (
     <Wrapper>
-      <FloatingActionButton
-        onPress={() => console.log("onPress")}
-        iconName="plus"
-      />
+      <FloatingActionButton onPress={() => null} iconName="plus" />
     </Wrapper>
   );
 };
@@ -30,7 +27,7 @@ const Label = () => {
   return (
     <Wrapper>
       <FloatingActionButton
-        onPress={() => console.log("onPress")}
+        onPress={() => null}
         iconName="plus"
         label="Label"
       />
