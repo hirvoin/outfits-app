@@ -2,6 +2,7 @@ import { storiesOf } from "@storybook/react-native";
 import React, { useState } from "react";
 import styled from "styled-components/native";
 
+import { createGarment } from "../../services/garments";
 import GarmentListItem from "./GarmentListItem";
 
 const Wrapper = styled.View`
@@ -11,6 +12,8 @@ const Wrapper = styled.View`
   height: 100%;
 `;
 
+const garment = createGarment();
+
 storiesOf("Garment List Item", module)
   .add("Basic", () => <Basic />)
   .add("Favorited", () => <Favorited />)
@@ -18,14 +21,14 @@ storiesOf("Garment List Item", module)
 
 const Basic = () => (
   <Wrapper>
-    <GarmentListItem id={1} title="Title" />
+    <GarmentListItem {...garment} />
   </Wrapper>
 );
 
 const Favorited = () => (
   <Wrapper>
     <GarmentListItem
-      id={1}
+      {...garment}
       title="With onFavorite"
       onFavorite={() => null}
       isFavorited
@@ -39,8 +42,8 @@ const Selected = () => {
   return (
     <Wrapper>
       <GarmentListItem
-        id={1}
-        title="Selected"
+        {...garment}
+        title="With onFavorite"
         isSelected={selected}
         onPress={toggleSelected}
       />

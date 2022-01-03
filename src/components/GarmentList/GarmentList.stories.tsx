@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 
 import GarmentList from "./GarmentList";
 import { Props as GarmentListItemProps } from "../GarmentListItem/GarmentListItem";
+import { createGarment } from "../../services/garments";
 
 const Wrapper = styled.View`
   justify-content: center;
@@ -14,26 +15,12 @@ const Wrapper = styled.View`
 
 storiesOf("Garment List", module).add("Basic", () => <Basic />);
 
-const data: GarmentListItemProps[] = [
-  { title: "Item 1" },
-  { title: "Item 2" },
-  { title: "Item 3" },
-  { title: "Item 4" },
-  { title: "Item 5" },
-  { title: "Item 6" },
-  { title: "Item 7" },
-  { title: "Item 8" },
-  { title: "Item 9" },
-  { title: "Item 10" },
-  { title: "Item 11" },
-  { title: "Item 12" },
-  { title: "Item 13" },
-  { title: "Item 14" },
-  { title: "Item 15" },
-];
+const data: GarmentListItemProps[] = [...Array(10)].map((i) =>
+  createGarment({ id: i.toString() })
+);
 
 const Basic = () => (
   <Wrapper>
-    <GarmentList data={data} />
+    <GarmentList data={data} onFavorite={() => null} onPress={() => null} />
   </Wrapper>
 );

@@ -16,7 +16,7 @@ storiesOf("Image Input", module).add("Basic", () => <Basic />);
 const Basic = () => {
   return (
     <Wrapper>
-      <ImageInput />
+      <ImageInput imageUri="" />
     </Wrapper>
   );
 };

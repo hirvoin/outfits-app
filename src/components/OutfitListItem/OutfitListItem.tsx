@@ -55,6 +55,7 @@ const DateIcon = styled(Icon)`
 type OutfitListGarment = Pick<GarmentListItemProps, "imageUri" | "id">;
 
 export interface Props {
+  id: string;
   date: string;
   garments: OutfitListGarment[];
 }

@@ -10,7 +10,7 @@ export interface Garment {
   category?: GarmentCategory;
 }
 
-const createGarment = (garment?: Partial<Garment>): Garment => ({
+export const createGarment = (garment?: Partial<Garment>): Garment => ({
   id: 1,
   userId: 1,
   title: "Black t-shirt",

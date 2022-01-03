@@ -31,8 +31,8 @@ const useQuery = (
         // eslint-disable-next-line no-console
         console.error("Failed to perform fetchGraphQL", e);
         setError(e);
-        setLoading(false);
       }
+      setLoading(false);
     }
     fetch();
 

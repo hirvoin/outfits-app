@@ -18,6 +18,6 @@ const outfit = createOutfit();
 
 const Basic = () => (
   <Wrapper>
-    <OutfitListItem date={outfit.date} garments={outfit.garments} />
+    <OutfitListItem {...outfit} />
   </Wrapper>
 );

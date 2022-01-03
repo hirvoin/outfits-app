@@ -4,6 +4,7 @@ import styled from "styled-components/native";
 
 import OutfitList from "./OutfitList";
 import { OutfitListItemProps } from "..";
+import { createOutfit } from "../../services/outfits";
 
 const Wrapper = styled.View`
   justify-content: center;
@@ -15,12 +16,9 @@ const Wrapper = styled.View`
 storiesOf("Outfit List", module).add("Basic", () => <Basic />);
 
 const data: OutfitListItemProps[] = [
-  { id: 1, date: "Weekday 00.00.0000" },
-  { id: 2, date: "Weekday 00.00.0000" },
-  { id: 3, date: "Weekday 00.00.0000" },
-  { id: 4, date: "Weekday 00.00.0000" },
-  { id: 5, date: "Weekday 00.00.0000" },
-  { id: 6, date: "Weekday 00.00.0000" },
+  createOutfit({ id: "1" }),
+  createOutfit({ id: "2" }),
+  createOutfit({ id: "3" }),
 ];
 
 const Basic = () => (
