@@ -53,8 +53,8 @@ const IconContainer = styled.TouchableOpacity`
 
 export interface Props extends Garment {
   isSelected?: boolean;
-  onFavorite?: (id: number) => void;
-  onPress?: (id: number) => void;
+  onFavorite?: (id: string) => void;
+  onPress?: (id: string) => void;
 }
 
 const GarmentListItem = ({

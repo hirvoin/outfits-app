@@ -15,9 +15,10 @@ const Wrapper = styled.View`
 
 storiesOf("Garment Form List", module).add("Basic", () => <Basic />);
 
-const garments: GarmentListItemProps[] = [...Array(10)].map((i) =>
-  createGarment({ id: i.toString() })
+const garments: GarmentListItemProps[] = [...Array(10)].map((i, index) =>
+  createGarment({ id: index.toString() })
 );
+
 const Basic = () => {
   const [data, setData] = useState(garments);
 

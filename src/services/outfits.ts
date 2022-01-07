@@ -2,14 +2,14 @@ import { Garment, mockApiCall, mockGarments } from "./garments";
 
 export interface Outfit {
   id: string;
-  userId: number;
+  userId: string;
   date: string;
   garments: Garment[];
 }
 
 export const createOutfit = (outfit?: Partial<Outfit>): Outfit => ({
   id: "1",
-  userId: 1,
+  userId: "1",
   date: new Date().toISOString(),
   garments: mockGarments,
   ...outfit,

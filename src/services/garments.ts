@@ -1,8 +1,8 @@
 type GarmentCategory = "outerwear" | "tops" | "bottoms" | "footwear";
 
 export interface Garment {
-  id: number;
-  userId: number;
+  id: string;
+  userId: string;
   title: string;
   isFavorited: boolean;
   color: string;
@@ -11,8 +11,8 @@ export interface Garment {
 }
 
 export const createGarment = (garment?: Partial<Garment>): Garment => ({
-  id: 1,
-  userId: 1,
+  id: "1",
+  userId: "1",
   title: "Black t-shirt",
   isFavorited: false,
   color: "black",
@@ -24,7 +24,7 @@ export const createGarment = (garment?: Partial<Garment>): Garment => ({
 
 const mockShirt = createGarment();
 const mockJacket = createGarment({
-  id: 2,
+  id: "2",
   title: "Green coat",
   color: "green",
   category: "outerwear",
@@ -32,7 +32,7 @@ const mockJacket = createGarment({
     "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2Fdd%2Ff7%2Fddf7e435eed0e0327d684d61a1f3e1e9d30c6920.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jacketscoats_bomberjackets%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
 });
 const mockJeans = createGarment({
-  id: 3,
+  id: "3",
   title: "Blue jeans",
   color: "blue",
   category: "bottoms",
@@ -40,7 +40,7 @@ const mockJeans = createGarment({
     "https://lp2.hm.com/hmgoepprod?set=quality%5B79%5D%2Csource%5B%2F40%2Fcf%2F40cf42a76cf1f0ee44baa98d75acc836ef9d85d5.jpg%5D%2Corigin%5Bdam%5D%2Ccategory%5Bmen_jeans_slim%5D%2Ctype%5BDESCRIPTIVESTILLLIFE%5D%2Cres%5Bm%5D%2Chmver%5B1%5D&call=url[file:/product/main]",
 });
 const mockShoes = createGarment({
-  id: 4,
+  id: "4",
   title: "Black shoes",
   color: "black",
   category: "footwear",

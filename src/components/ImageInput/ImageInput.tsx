@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components/native";
+import { AnimatedLayout } from "react-native-reanimated";
+
 import FloatingActionButton from "../FloatingActionButton/FloatingActionButton";
 
 const Container = styled.View`
@@ -21,15 +23,32 @@ export interface Props {
 }
 
 const ImageInput = ({ imageUri }: Props) => {
+  const [showButtons, setShowButtons] = useState(false);
   const source = imageUri
     ? { uri: imageUri }
     : // eslint-disable-next-line global-require
       require("../../../assets/icon.png");
 
+  const toggleButtons = () => setShowButtons(!showButtons);
+
   return (
     <Container>
       <StyledImage source={source} />
-      <FloatingActionButton iconName="pencil" />
+      <FloatingActionButton iconName="pencil" onPress={toggleButtons} />
+      {showButtons && (
+        <AnimatedLayout>
+          <FloatingActionButton
+            iconName="camera"
+            onPress={toggleButtons}
+            right={80}
+          />
+          <FloatingActionButton
+            iconName="image-plus"
+            onPress={toggleButtons}
+            right={146}
+          />
+        </AnimatedLayout>
+      )}
     </Container>
   );
 };

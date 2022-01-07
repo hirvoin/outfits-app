@@ -15,8 +15,8 @@ const Wrapper = styled.View`
 
 storiesOf("Garment List", module).add("Basic", () => <Basic />);
 
-const data: GarmentListItemProps[] = [...Array(10)].map((i) =>
-  createGarment({ id: i.toString() })
+const data: GarmentListItemProps[] = [...Array(10)].map((i, index) =>
+  createGarment({ id: index.toString() })
 );
 
 const Basic = () => (

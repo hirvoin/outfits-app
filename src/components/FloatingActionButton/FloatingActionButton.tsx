@@ -5,9 +5,9 @@ import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 import Typography from "../Typography/Typography";
 
-const Container = styled.View`
+const Container = styled.View<{ right: number }>`
   bottom: 32px;
-  right: 16px;
+  right: ${({ right }) => `${right}px`};
   position: absolute;
 `;
 
@@ -37,11 +37,17 @@ const Label = styled(Typography)`
 export interface Props extends TouchableOpacityProps {
   iconName: string;
   label?: string;
+  right?: number;
 }
 
-const FloatingActionButton = ({ iconName, label, onPress }: Props) => {
+const FloatingActionButton = ({
+  iconName,
+  label,
+  onPress,
+  right = 16,
+}: Props) => {
   return (
-    <Container>
+    <Container right={right}>
       <Button hasLabel={!!label} onPress={onPress}>
         <ButtonIcon name={iconName} />
         {!!label && <Label fontWeight="medium">{label}</Label>}
