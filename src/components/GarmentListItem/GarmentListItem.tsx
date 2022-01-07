@@ -1,13 +1,15 @@
 import React from "react";
+import { Dimensions } from "react-native";
 import styled from "styled-components/native";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
 
 import { Garment } from "../../services/garments";
 import Typography from "../Typography/Typography";
 
-const Container = styled.TouchableOpacity`
+const Container = styled.TouchableOpacity<{ width: number }>`
+  margin: 4px;
   height: 150px;
-  width: 100%;
+  width: ${(props) => `${props.width}px`};
   background: rgb(128, 128, 128);
   border-radius: 4px;
 `;
@@ -51,6 +53,9 @@ const IconContainer = styled.TouchableOpacity`
   align-self: center;
 `;
 
+const screen = Dimensions.get("screen");
+const width = screen.width / 2 - 16;
+
 export interface Props extends Garment {
   isSelected?: boolean;
   onFavorite?: (id: string) => void;
@@ -72,7 +77,7 @@ const GarmentListItem = ({
   const handlePress = () => onPress?.(id);
 
   return (
-    <Container onPress={handlePress}>
+    <Container onPress={handlePress} width={width}>
       <GarmentImage source={{ uri: imageUri }} />
       <InfoContainer>
         <TitleContainer>

@@ -12,11 +12,6 @@ const Container = styled.View`
   padding: 16px 8px;
 `;
 
-const ItemContainer = styled.View`
-  width: 150px;
-  margin-right: 8px;
-`;
-
 const Title = styled(Typography)`
   color: ${(props) => props.theme.colors.black};
   font-size: ${(props) => props.theme.fontSizes.large};
@@ -32,9 +27,7 @@ interface Props {
 const GarmentFormList = ({ title, data = [], onItemPress }: Props) => {
   const theme = useTheme();
   const renderItem = ({ item }: { item: GarmentListItemProps }) => (
-    <ItemContainer>
-      <GarmentListItem {...item} onPress={onItemPress} />
-    </ItemContainer>
+    <GarmentListItem {...item} onPress={onItemPress} />
   );
 
   const keyExtractor = (item: GarmentListItemProps) => item.title.toString();

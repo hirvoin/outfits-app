@@ -8,6 +8,7 @@ import Typography from "../Typography/Typography";
 const Container = styled.TouchableOpacity`
   background: rgb(184, 184, 184);
   border-radius: 4px;
+  margin: 4px 8px;
 `;
 
 const GarmentGrid = styled.View`
