@@ -4,12 +4,13 @@ import {
   Picker,
   PickerItemProps as RNPPickerItemProps,
 } from "@react-native-picker/picker";
+
 import Typography from "../Typography/Typography";
 
 const PickerContainer = styled.View`
   width: 100%;
   background-color: ${(props) => props.theme.colors.white};
-  padding: 16px 8px;
+  padding-left: 8px;
   border-radius: 4px;
 `;
 
@@ -20,6 +21,7 @@ const Container = styled.View`
 
 const Label = styled(Typography)`
   padding-left: 16px;
+  margin-bottom: 4px;
 `;
 
 const StyledPicker = styled(Picker)`

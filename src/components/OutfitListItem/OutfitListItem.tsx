@@ -36,8 +36,7 @@ const InfoContainer = styled.View`
   background: #0000005c;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
-  padding: 16px;
-  /* justify-content: center; */
+  padding-left: 16px;
   flex-direction: row;
   align-items: center;
 `;

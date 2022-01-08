@@ -14,7 +14,7 @@ import { useAuth } from "../context/auth";
 
 export type GarmentStackParamList = {
   GarmentTab: undefined;
-  GarmentForm: { category: string; garmentId?: number };
+  GarmentForm: { category: string; garmentId?: string };
 };
 
 const GarmentStack = createNativeStackNavigator<GarmentStackParamList>();
@@ -57,7 +57,7 @@ const GarmentStackNavigator = ({
         name="GarmentTab"
         component={GarmentTabNavigator}
         options={{
-          headerTitle: "Wardrobe",
+          headerTitle: "Garments",
           headerShadowVisible: false,
         }}
       />

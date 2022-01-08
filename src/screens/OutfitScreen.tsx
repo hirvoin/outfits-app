@@ -1,6 +1,4 @@
 import React from "react";
-import { ActivityIndicator } from "react-native";
-import { useTheme } from "styled-components/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
 import useQuery from "../hooks/useQuery";
@@ -26,15 +24,11 @@ const OUTFITS = `query OutfitsQuery {
 }`;
 
 function OutfitScreen({ navigation }: Props) {
-  const { loading, data } = useQuery(OUTFITS);
-  const theme = useTheme();
+  const { data } = useQuery(OUTFITS);
 
   return (
     <ScreenContainer>
-      {loading && (
-        <ActivityIndicator color={theme.colors.primary} size="large" />
-      )}
-      {!loading && <OutfitList data={data.outfits} />}
+      <OutfitList data={data.outfits} />
       <FloatingActionButton
         iconName="plus"
         label="Add outfit"

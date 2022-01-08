@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components/native";
-import { AnimatedLayout } from "react-native-reanimated";
+import * as ImagePicker from "expo-image-picker";
 
 import FloatingActionButton from "../FloatingActionButton/FloatingActionButton";
 
@@ -24,30 +24,92 @@ export interface Props {
 
 const ImageInput = ({ imageUri }: Props) => {
   const [showButtons, setShowButtons] = useState(false);
-  const source = imageUri
-    ? { uri: imageUri }
-    : // eslint-disable-next-line global-require
-      require("../../../assets/icon.png");
+  const [cameraPermission, requestCameraPermission] =
+    ImagePicker.useCameraPermissions();
+  const [mediaPermission, requestMediaPermission] =
+    ImagePicker.useMediaLibraryPermissions();
+
+  const [capturedPicture, setCapturedPicture] =
+    useState<ImagePicker.ImageInfo | null>(null);
+
+  useEffect(() => {
+    (async () => {
+      if (!cameraPermission?.granted) {
+        await requestCameraPermission();
+      }
+
+      if (!mediaPermission?.granted) {
+        await requestMediaPermission();
+      }
+
+      console.log({ cameraPermission });
+      console.log({ mediaPermission });
+    })();
+  }, [
+    cameraPermission,
+    mediaPermission,
+    requestCameraPermission,
+    requestMediaPermission,
+  ]);
+
+  const source =
+    capturedPicture || imageUri
+      ? { uri: capturedPicture?.uri ?? imageUri }
+      : // eslint-disable-next-line global-require
+        require("../../../assets/icon.png");
 
   const toggleButtons = () => setShowButtons(!showButtons);
+
+  const takePicture = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setCapturedPicture(result);
+    }
+  };
+
+  const pickImage = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setCapturedPicture(result);
+    }
+  };
 
   return (
     <Container>
       <StyledImage source={source} />
-      <FloatingActionButton iconName="pencil" onPress={toggleButtons} />
+      <FloatingActionButton
+        iconName={showButtons ? "chevron-right" : "pencil"}
+        onPress={toggleButtons}
+      />
       {showButtons && (
-        <AnimatedLayout>
+        <>
           <FloatingActionButton
             iconName="camera"
-            onPress={toggleButtons}
+            onPress={takePicture}
             right={80}
           />
           <FloatingActionButton
-            iconName="image-plus"
-            onPress={toggleButtons}
+            iconName="file-plus"
+            onPress={pickImage}
             right={146}
           />
-        </AnimatedLayout>
+        </>
       )}
     </Container>
   );
