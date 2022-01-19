@@ -1,4 +1,4 @@
-# Wardrobe application
+# Outfits
 
 ## Motivation
 
