@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import Icon from "@expo/vector-icons/MaterialCommunityIcons";
+import { format, formatDistance, formatRelative, subDays } from "date-fns";
 
 import { GarmentListItemProps } from "..";
 import Typography from "../Typography/Typography";
@@ -69,12 +70,14 @@ const GarmentListItem = ({ date, garments }: Props) => {
     );
   };
 
+  const formattedDate = formatRelative(subDays(new Date(), 1), new Date());
+
   return (
     <Container>
       <GarmentGrid>{garments.map(renderGarmentImage)}</GarmentGrid>
       <InfoContainer>
         <DateIcon name="calendar-clock" />
-        <StyledText>{date}</StyledText>
+        <StyledText>{formattedDate}</StyledText>
       </InfoContainer>
     </Container>
   );
