@@ -1,10 +1,14 @@
 # Wardrobe application
 
+## Motivation
+
+After reading a [blogpost](https://www.reaktor.com/blog/why-ive-tracked-every-single-piece-of-clothing-ive-worn-for-three-years/) about garment usage tracking (and becoming rather fascinated by the idea), I thought that I could build a mobile application with similiar functionality for my own use. On top of that, I wanted to gain more familiarity with using Expo, GraphQL and Golang.
+
 ## Todo
 
-- Proper authentication handling
-- Image uploading
-- Garment favoriting and wear count logic
+- Firebase integration
+  - Proper authentication handling
+  - Image uploading
 - Basic CI/CD
 
 ## Develop
