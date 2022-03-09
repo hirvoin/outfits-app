@@ -70,7 +70,7 @@ const GarmentListItem = ({ date, garments }: Props) => {
     );
   };
 
-  const formattedDate = formatRelative(subDays(new Date(), 1), new Date());
+  const formattedDate = formatRelative(subDays(new Date(date), 1), new Date());
 
   return (
     <Container>
